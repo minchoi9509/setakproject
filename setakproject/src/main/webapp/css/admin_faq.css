@@ -1,0 +1,128 @@
+@charset "UTF-8";
+   
+   a{ text-decoration:none; }
+   a:link { color: #fff; text-decoration: none;}
+   a:visited { color: #fff; text-decoration: none;}  
+   small{ font-size: 0.8rem; color:#aa9fa7; line-height: 22px; cursor: pointer;}
+   
+   #faq-table { width:1200px; margin:auto; }
+   
+   input[type=button]{ cursor:pointer; WIDTH:50pt; HEIGHT:25pt;   
+   color:#fff; background-color:#3498db;
+   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+   outline: none; margin:5px;
+   }
+   input[type=submit]{ cursor:pointer; WIDTH:50pt; HEIGHT:25pt;   
+   color:#fff; background-color:#3498db;
+   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+   outline: none; margin:5px;
+   }
+   button{ cursor:pointer; WIDTH:50pt; HEIGHT:25pt;   
+   color:#fff; background-color:#3498db;
+   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+   outline: none; margin:5px;
+   }
+
+   
+   table, th, td { border: 1px solid #e1e4e4; 
+   border-collapse:collapse; padding: 10px; 
+   font-family:inherit; line-height: 25px;
+   }
+   #faq-thead { background-color: #3498db; color: #fff; letter-spacing: 2px; }
+   
+   #admin-faq-tab{ display:inline-flex; justify-content:space-between;
+    text-align:center; color:#444;  width:1200px; margin:auto;         
+   }
+   
+   #admin-faq-tab li { 
+   width:100%; box-sizing:content-box; display:inline-block; padding:15px; cursor:pointer; 
+   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;   
+   margin-bottom:5px;   
+   }
+   #admin-faq-tab_con {width:1200px; margin:auto; display:inline-flex;}
+   #admin-faq-tab li.on { background-color: #3498db; color:#fff; }       
+   #admin-faq-tab_con table {display:none;}      
+   
+   
+   /* 수정+ 삭제 모달팝업 */   
+   
+   	 #ad-faq-setting { display:none; position: fixed; left:50px; top:50px; 
+     width:700px; height:650px; border: 2px solid #3498db; box-sizing:border-box;
+     left:50%; top:50%; padding: 50px 60px 50px;
+     transform: translate(-50%,-50%); z-index: 100; background: #fff;
+     }
+     
+     #ad-faq-setting h2{ font-size: 2rem; color: #444; 
+     text-align: center; line-height: 100%; 
+     padding-top:10px; padding-bottom:10px; 
+     margin-bottom: 10px;     
+     }
+     
+     #ad-faq-setting div { text-align: center; margin-bottom: 5px;}
+     #ad-faq-setting table{ margin: auto; table-layout: fixed; 
+     border:1px solid; height: 300px; text-align: center;
+     }
+     #ad-faq-setting p { padding: 5px;}
+     #ad-faq-setting textarea{ resize: none; width:500px; height:180px;
+         
+     }
+   
+   .close{ cursor:pointer; position:absolute; right:20px; top:20px;    
+   background-size: auto 100%; width:40px; height:40px;
+   }
+   
+   .dim{z-index: 99; display:none; position:fixed; left:0; top:0; width:100%;
+   height:100%; background:rgba(0,0,0,0.6); 
+   }
+   /* 모달끝 */
+   
+   /* 추가 모달팝업 */   
+   
+   	 #ad-faq-insert { display:none; position: fixed; left:50px; top:50px; 
+     width:800px; height:650px; border: 2px solid #3498db; box-sizing:border-box;
+     left:50%; top:50%; padding: 50px 60px 50px;
+     transform: translate(-50%,-50%); z-index: 100; background: #fff;
+     }
+     
+     #ad-faq-insert h2{ font-size: 2rem; color: #444; 
+     text-align: center; line-height: 100%; margin-bottom: 10px; 
+     padding-top:10px; padding-bottom:10px;      
+     }
+     
+     #ad-faq-insert div { text-align: center; margin-bottom: 5px;}
+     #ad-faq-insert table{ margin: auto; table-layout: fixed; border:1px solid;  
+     width: 700px; height:500px; text-align: center;
+     }
+     #ad-faq-insert p { padding: 5px;}
+     #ad-faq-insert textarea{ resize: none; width:500px; height:180px;
+         
+     }
+   
+   .close2{ cursor:pointer; position:absolute; right:20px; top:20px;    
+   background-size: auto 100%; width:40px; height:40px;
+   }
+   
+   .dim2{z-index: 99; display:none; position:fixed; left:0; top:0; width:100%;
+   height:100%; background:rgba(0,0,0,0.6); 
+   }
+   /* 모달끝 */
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

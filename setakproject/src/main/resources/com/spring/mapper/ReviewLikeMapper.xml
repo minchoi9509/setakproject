@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.ReviewLikeMapper">
+	<resultMap type="com.spring.community.ReviewLikeVO" id="reviewlikeMap">		
+		<result property="review_num" column="review_num"/>
+		<result property="member_id" column="member_id"/>		
+	</resultMap>	
+	<resultMap type="com.spring.community.ReviewVO" id="reviewMap">
+		<result property="review_num" column="review_num"/>
+		<result property="member_id" column="member_id"/>
+		<result property="review_kind" column="review_kind"/>
+		<result property="review_star" column="review_star"/>
+		<result property="review_content" column="review_content"/>
+		<result property="review_like" column="review_like"/>
+		<result property="review_photo" column="review_photo"/>
+		<result property="review_date" column="review_date"/>		
+	</resultMap>	
+
+	<select id="getReviewLike" resultType="int">
+        SELECT  COUNT(*) FROM review_like WHERE review_num=#{review_num} AND member_id = #{member_id}
+   	</select>
+	
+	<insert id="insertReviewLike" parameterType="com.spring.community.ReviewLikeVO">
+        INSERT INTO review_like (review_num, member_id ) VALUES ( #{review_num}, #{member_id})
+    </insert>
+ 	
+    <delete id="deleteReviewLike" parameterType="com.spring.community.ReviewLikeVO">
+        DELETE FROM review_like  WHERE review_num=#{review_num} AND member_id = #{member_id}
+    </delete>
+
+    <update id="updateReviewLike1" parameterType="com.spring.community.ReviewLikeVO">
+UPDATE review SET review_like =review_like + 1 WHERE review.review_num=#{review_num}
+</update>
+   
+    <update id="updateReviewLike2" parameterType="com.spring.community.ReviewLikeVO">
+UPDATE review SET review_like =review_like - 1 WHERE review.review_num=#{review_num}
+   </update>
+
+  
+</mapper>	

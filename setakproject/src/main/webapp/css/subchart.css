@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.content {
+	width : 100%;
+	margin-left : 0px;
+}
+
+.content h1 {
+	margin-left : 240px; 
+}
+
+div#all-sub-chart-div {
+	width : 1200px;
+	margin : 0 auto; 
+}

@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+	.title-text {
+		position: absolute;
+		right: 0;
+		left: 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+		-moz-box-pack: center;
+		-moz-box-align: center;
+		-ms-box-pack: center;
+		-ms-box-align: center;
+	}
+	.title-text h2 {
+		font-size: 2rem;
+		color: #444;
+	}
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 51%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+	#history > .content{
+		position:relative;
+	}
+	.history{
+		padding-top:120px;
+	}
+	.history p{
+		text-align:center;
+		margin-bottom:50px;
+	}
+	.history img{
+		width:100%;
+	}
+	.history-left, .history-right{
+		display:none;
+		position:absolute;
+	}
+	.history-left h2, .history-right h2{
+    	font-size: 1.4rem;
+ 	}
+    .history-left p, .history-right p{
+    	font-size: 1rem;
+    	padding-top:10px;
+ 	}
+	.history-left{
+		top:26.5%;
+		text-align:right;
+		left:25.3%;
+	}
+	.history-right{
+		top:35%;
+		left:56.3%;
+	}
+	.history-left:nth-child(5){
+		top:43.9%;
+	}
+	.history-right:nth-child(6){
+		top:52.6%;
+	}
+	.history-left:nth-child(7){
+		top:61.3%;
+	}
+	.history-right:nth-child(8){
+		top:70%;
+	}
+	.history-left:nth-child(9){
+		top:78.6%;
+	}
+	.history-right:nth-child(10){
+		top:87.5%;
+	}
+	.history-left:nth-child(11){
+		top:96.1%;
+        left:35.8%;
+	}
+	.history_people{
+		display:flex;
+		justify-content:space-between;
+		margin-top:200px;
+	}
+	.history_people li{
+		display:none;
+		width:100%;
+		margin:0 3px;
+	}
+	.history_people li img{
+		width:100%;
+	}
+	.history_people li p:nth-child(2){
+		text-align:center;
+		font-size:1.6rem;
+		padding:6px 0 12px;
+		border-bottom:1px solid #3498db;
+		margin:0 8px 8px;
+	}
+	.history_people li p{
+		padding:0 12px;
+		font-size:0.85rem;
+		line-height:1.35rem;
+		color:#444;
+	}
+
+@media screen and (max-width:768px) {
+	.title-text {
+		position: absolute;
+		right: 0;
+		left: 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+		-moz-box-pack: center;
+		-moz-box-align: center;
+		-ms-box-pack: center;
+		-ms-box-align: center;
+	}
+	.title-text h2 {
+		font-size: 1.8rem;
+		color: #444;
+	}
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 51%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+	#history > .content{
+		position:relative;
+	}
+	.history{
+		padding-top:80px;
+	}
+	.history p{
+		text-align:center;
+		margin-bottom:30px;
+		font-size:0.8rem;
+	}
+	.history img{
+		width:100%;
+		display:none;
+	}
+	.history-left, .history-right{
+		display:block;
+		position:static;
+		border:1px solid #e1e4e4;
+		padding:15px 0 15px 26%;
+		margin-bottom:10px;
+	}
+	.history-left h2, .history-right h2{
+    	font-size: 1.2rem;
+ 	}
+    .history-left p, .history-right p{
+    	font-size: 0.9rem;
+    	padding-top:10px;
+ 	}
+	.history-left{
+		top:6.5%;
+		text-align:left;
+		left:55.3%;
+	}
+	.history-right{
+		top:35%;
+		left:56.3%;
+	}
+	.history-left:nth-child(5){
+		top:43.9%;
+	}
+	.history-right:nth-child(6){
+		top:52.6%;
+	}
+	.history-left:nth-child(7){
+		top:61.3%;
+	}
+	.history-right:nth-child(8){
+		top:70%;
+	}
+	.history-left:nth-child(9){
+		top:78.6%;
+	}
+	.history-right:nth-child(10){
+		top:87.5%;
+	}
+	.history-left:nth-child(11){
+		top:96.1%;
+        left:35.8%;
+	}
+	.history_people{
+		display:block;
+		justify-content:space-between;
+		margin-top:100px;
+	}
+	.history_people li{
+		display:block;
+		width:100%;
+		margin:0 3px 80px;
+	}
+	.history_people li img{
+		width:100%;
+	}
+	.history_people li p:nth-child(2){
+		text-align:center;
+		font-size:1.6rem;
+		padding:15px 0 15px;
+		border-bottom:1px solid #3498db;
+		margin:0 10px 8px;
+	}
+	.history_people li p{
+		padding:0 30px;
+		font-size:0.85rem;
+		line-height:1.35rem;
+		color:#444;
+	}
+}

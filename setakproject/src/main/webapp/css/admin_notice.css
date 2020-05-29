@@ -1,0 +1,186 @@
+@charset "utf-8";
+	.content ul{
+		width:100%;
+		display:flex;
+		justify-content: space-between;
+		border-bottom:1px solid #e1e4e4;
+	}
+	.content li{
+		widht:100%;
+		text-align:center;
+		margin:0 1px;		
+		width:100%;
+		font-size:0.9rem;
+		height:40px;
+		line-height:40px;
+		color:#444;
+	}
+	input[type=button]{ cursor:pointer; WIDTH:50pt; HEIGHT:25pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-family: inherit;
+	   }
+	input[type=submit]{ cursor:pointer; WIDTH:50pt; HEIGHT:25pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-family: inherit;
+	   }
+	button{ cursor:pointer; WIDTH:45pt; HEIGHT:50pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-family: inherit;
+	   }
+	#a-n-i-tarea textarea{ 
+  	resize:none; height:150px; width:500px; 
+  	border-top-left-radius: 5px;  border-bottom-left-radius: 5px;
+   	border-top-right-radius: 5px; border-bottom-right-radius: 5px;
+   	box-sizing: border-box; padding: 8px; 
+	}
+	
+	#a-n-i-text { width:350px; 
+  	border-top-left-radius: 5px;  border-bottom-left-radius: 5px;
+   	border-top-right-radius: 5px; border-bottom-right-radius: 5px;
+   	box-sizing: border-box; padding: 8px;
+	}
+	
+	
+	.content ul li:nth-child(1),
+	.content ul li:nth-child(6),.content ul li:nth-child(5){
+		width:5%;
+	}
+	.content ul li:nth-child(4){
+		width:10%;
+	}
+    .content ul li:nth-child(2){
+		width:25%;
+	}
+	.content ul li:nth-child(3){
+		width:50%;
+	}
+	
+	.ad-notice_title li{
+		background:#3498db;
+		color:#fff;
+		font-size:1rem;
+	}
+    .clickable {
+    	cursor: pointer;
+    }
+    .active{
+    	
+    	height:30px;
+    	background:#3498db;
+    	color:white;
+    }
+    .notice_list{
+    	position:relative;
+    }
+    .notice_list ul li a{
+    	color:#444;
+    	cursor:pointer;
+    }
+    #remo{
+    	
+    	color:#444;
+    	font-size:0.93rem;   	
+    	width:100%;
+    	text-align:center;
+    	border-top:1px solid #3498db;
+    	padding-top: 70px;
+    	margin-bottom: 50px;
+    }
+    .page-number{
+    	padding:5px 8px;
+    	margin:0 4px;
+    }
+    .chkdelete{
+    	margin:5px;
+    	border:0px;
+    	background:#3498db;
+    	color:#fff;
+    	padding:6.5px 6.5px 8px;
+    	border-radius:5px;
+    	cursor:pointer;
+    	z-index:30;
+    }
+    .chkinsert{
+    	margin:5px;
+    	border:0px;
+    	background:#3498db;
+    	color:#fff;
+    	padding:6.5px 6.5px 8px;
+    	border-radius:5px;
+    	cursor:pointer;
+    	z-index:30;
+    }
+    #update:hover{
+        color:#3498db;
+		font-weight:bold;
+		cursor: pointer;
+	 }
+    .after, .update_count input{
+    	color:#3498db !important;
+    	font-size:0.95rem;
+    	font-weight:bold;
+    	cursor:pointer;
+    }
+    .notice_default{
+		text-align:center;
+		border:0px;
+		background:none;
+		font-size:0.9rem;
+		color:#444;
+		width:100%;
+	}
+	.notice_num{
+		width:45px;
+		text-align:center;
+		background:none;/*  background: #e1e4e4; */
+		border:0px;
+		color:#444;
+		
+	}
+	.notice_title{
+		width:60%;
+		
+		background:none;/*  background: #e1e4e4; */
+		border:0px;
+		color:#444;
+		
+	}
+    .notice_content{
+    	width:90%;
+    	background:none;
+	    border:0px;
+	    padding:5px 0 5px 10px ;
+	    color:#444;
+    }
+    .notice_date{
+    	width:120px;
+    	background:none;
+    	text-align:center;
+    	border:0px;
+    	padding:5px 0 5px 10px;
+    	color:#444;
+    }
+       
+    .upadte_select{
+    	border:1px solid #3498db;
+    	color:#3498db;
+    }
+    
+    #ad-notice-insert{ display:none;
+    }
+    #ad-notice-insert-btn{
+    }
+	#ad-notice-insert-form{
+		margin-bottom: 450px;
+	}
+	
+	
+	
+	
+	

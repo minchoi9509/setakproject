@@ -1,0 +1,379 @@
+@charset "UTF-8";
+
+.content {
+    margin : 0px 0px 0px 200px;
+}
+
+/*title-div*/
+#title-div {
+    height : 150px;
+    padding: 50px 70px 0px 70px;
+    border-bottom : 1px solid #e8e8e8;
+}
+
+.title-num {
+	width: 15%;
+	margin-right: 20px;
+	display : inline-block;
+}
+
+.title-num:last-child {
+	width : 30%;
+}
+
+.title-icon {
+	display : inline-block;
+	width : 50px;
+}
+
+.title-content {
+	margin-left : 10px;
+	display : inline-block;
+}
+
+.title-content strong {
+	display : block;
+	font-size : 1rem;
+}
+
+.title-content span {
+	color : #b3b3b3;
+	font-size : 0.85rem;
+	margin-top : 10px;
+}
+
+span.count-number {
+	font-size : 3rem;
+	color : #444; 
+}
+
+span.count-txt {
+	font-size : 0.7rem;
+}
+
+/*오늘 매출액*/
+
+.title-num:last-child .count-number-div {
+    margin-top : 10px;
+}
+
+#price-span.count-number {
+	font-size : 2.4rem;
+
+}
+
+/*content-div*/
+#content-div{
+	padding-bottom:  100px;
+	background-color:#eaeeee;
+}
+
+#content-div ul.body-ul{
+	padding:30px 0px 15px;
+	display:flex;
+	justify-content: space-between;
+}
+
+#content-div ul.body-ul > li{
+	overflow: hidden;
+	width: 31%;
+	height:330px;
+	background-color:#fff;
+	color:#444;
+	box-shadow: 5px 5px 5px rgba(85, 85, 85, 0.2);
+}
+
+
+#content-div ul.body-ul > li:first-child{
+    margin-left : 30px;
+}
+
+#content-div ul.body-ul > li:last-child{
+    margin-right : 30px;
+}
+
+
+#content-div ul.body-ul li .body-header {
+	padding: 15px 10px 8px 20px;
+}
+
+#content-div ul.body-ul li .body-content{
+	height: 80%;
+	padding: 0 15px 15px;
+	font-size:0.9rem;
+	line-height:1.5rem;
+}
+
+/*tool-div*/
+.body-tool {
+    position: relative;
+    float : right;
+    left: -10px;
+    top: -13px;
+}
+
+/*설명*/
+.arrow_box {
+  display: none;
+  position: absolute;
+  width: 300px;
+  padding: 8px;
+  right: 0;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;  
+  border-radius: 8px;
+  background: #b9b8b8;
+  color: #fff;
+  font-size: 0.8rem;
+  z-index : 10;
+  opacity : 0.9;
+}
+
+.arrow_box:before {
+  position: absolute;
+  bottom: 100%;
+  right: 15px;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-bottom-color: #b9b8b8;
+  border-width: 10px;
+  pointer-events: none;
+  content: " ";
+}
+
+span:hover + p.arrow_box {
+  display: block;
+}
+
+/*오늘 날씨*/
+.today-div {
+    padding : 30px 0px;
+}
+
+.today-weather {
+	width : 100px;
+	margin : 0 auto;
+}
+
+.today-content {
+	text-align : center;
+}
+
+.today-content p.temp{
+	font-size : 2.5rem;
+	font-weight : bold;
+	margin-top : 15px;
+	margin-bottom : 5px;
+}
+
+.today-content p.tempText {
+	color : #909090;
+	margin-top : 10px;
+}
+
+p.tempExp {
+	color : #b1b1b1;
+	font-size : 0.8rem;
+	text-align : right;
+	border-top : 0.5px solid #e1dfdf; 
+	padding-top : 5px;
+}
+
+
+/*정기구독*/
+#content-div ul.body-ul li:nth-child(2) div.body-content{
+   padding : 0px;
+   width: 100%
+}
+
+#chart-area {
+    width: 100%;
+}
+
+#chart-area > .tui-chart {
+	margin : 0 auto; 
+}
+
+#top-sub {
+	float : right;
+	width: 100%;
+	height : 270px;
+	border-left : 1px solid #D8D8D8;
+	padding : 0px 10x;
+}
+
+#top-sub p {
+	font-size : 1.1rem;
+	font-weight : bold;
+	text-align : center;
+	padding-bottom : 20px;
+}
+
+#top-table {
+	width : 90%;
+	height : 60%;
+	margin: 0px auto;
+	padding: 0px 20px;
+}
+
+#top-table td:first-child {
+	font-weight : bold;
+}
+
+
+/*미답변 Q&A*/
+#qnaTable {
+	margin-top: 30px;
+	table-layout: fixed;
+	width : 100%;
+	height: 80%;
+	font-size : 0.85rem;
+}
+
+#qnaTable td:first-child {
+	width: 17%;
+}
+
+.qnaKind {
+	background-color :#eeefef;
+	padding : 3px 10px;
+	border-radius : 7px;
+	font-size : 0.8rem;
+}
+
+#qnaTable td:nth-child(2) {
+    color: #444;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+#qnaTable td:nth-child(2) a {
+	color : #444;
+}
+
+#qnaTable td:nth-child(2) a:hover {
+	color : #3498db;
+}
+
+#qnaTable td:last-child {
+	width : 15%;
+	color : #afafaf;
+}
+
+/*주문 관리*/
+.order-text {
+	margin : 30px 0px 20px;
+	font-size : 1rem;
+	text-align : center;
+}
+
+.order-text span {
+	color : #3498db;
+	font-weight : bold;
+
+}
+
+#order-table {
+	width : 100%;
+	border-spacing: 0;
+	text-align : center;
+}
+
+#order-table thead th {
+	padding-bottom : 7px;
+	border-bottom : 1px solid #D8D8D8; 
+    font-size : 0.9rem;
+}
+
+#order-table thead th:first-child {
+	width : 40%;
+}
+
+#order-table tbody td {
+	height : 30px;
+}
+
+#order-table tbody tr:hover {
+	background-color : #e5e5e575;
+	cursor : pointer;
+}
+
+
+/*팝업 레이어 공통*/
+.layer-card {
+	display : none;
+	z-index : 10;
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 200%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup-div {
+	display : none;
+	position : fixed;
+	width : 30%;
+	height : 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	background-color : #ffffff; 
+	padding : 30px; 
+}
+
+.popup-title {
+	border-bottom : 2px solid #eeefef; 
+	padding-bottom: 20px; 
+}
+
+.event-table {
+	width : 100%;
+}
+
+
+.event-table tr td {
+	padding : 10px;
+}
+
+.event-table tr td:first-child {
+	width : 20%;
+	text-align : center;
+	font-weight : bold;
+}
+
+.popup-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 65px;
+	height: 65px;
+	border: white;
+	background-color: white;
+	padding-top: 15px;
+	padding-right: 15px;
+	font-weight: bold;
+	font-size:1.5rem;
+	cursor:pointer;
+}
+
+.popup-close:active {
+	border : 0px; 
+}
+
+
+#eventBtn {
+		float : right; 
+		background-color: #3498db;
+	    color: #ffffff;
+		text-align: center;
+		box-shadow : none;
+		border : 0; 
+		height : 30px;
+		width : 70px;
+		cursor : pointer;
+		border-radius : 3px;
+}

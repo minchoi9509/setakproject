@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.Admin_memberMapper">
+   <resultMap type="com.spring.member.MemberVO" id="adminMemberVO">
+      <result property="member_name" column="member_name"/>
+      <result property="member_id" column="member_id"/>
+      <result property="member_phone" column="member_phone"/>
+      <result property="member_email" column="member_email"/>
+      <result property="member_zipcode" column="member_zipcode"/>
+      <result property="member_loc" column="member_loc"/>
+      <result property="member_join" column="member_join"/>
+      <result property="subs_num" column="subs_num"/>
+      <result property="member_memo" column="member_memo"/>
+   </resultMap>
+   
+   <!-- 전체 회원리스트 출력 -->
+   <select id="adminlist"  parameterType="HashMap"   resultMap="adminMemberVO">
+   	SELECT *
+   	FROM(SELECT rownum rnum, b.*
+   		 FROM(SELECT member_id, member_name, member_join, member_memo
+   			  FROM member
+   			  ORDER BY member_join desc ) b)
+   	WHERE <![CDATA[ rnum>=#{startrow} and rnum<=#{endrow} ]]> 		
+   </select>
+    
+    <!-- 전체 회원리스트 갯수 -->
+    <select id="adminlistcount" resultType="int">
+    	SELECT count(*) FROM member
+    </select>  
+
+	<!-- 오늘 가입한 회원 수 -->
+	<select id="todaycount" resultType="int">
+		 SELECT count(*) FROM member WHERE trunc(member_join) = trunc(sysdate) 		
+	</select>
+	
+	<!-- 메모 수정 버튼 클릭-->
+	<update id="update_memo" parameterType="com.spring.member.MemberVO" >
+		UPDATE member SET member_memo=#{member_memo} WHERE member_id= #{member_id, jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 검색-->
+	<select id="searchlist"  parameterType="HashMap" resultMap="adminMemberVO">
+		SELECT member_id, member_name, member_join, member_memo
+		FROM member
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test = "startDate != null" >
+		 		<![CDATA[(member_join > #{startDate, jdbcType=DATE} and member_join < #{endDate, jdbcType=DATE} or member_join like #{endDate, jdbcType=DATE}||'%')]]>
+			</if>
+			<if test = "keyword != null">
+				and (${searchType} like '%'||#{keyword, jdbcType=VARCHAR}||'%')
+			</if>
+		
+			<if test = "statusArr != null">
+			and (
+				<foreach collection="statusArr" item="item" index="index" separator="or" open="(" close=")">
+					<if test = "item.equals('카카오')">
+						member_id like '%K' 
+					</if>
+					<if test = "item.equals('네이버')">
+						 member_id like '%N'
+					</if>
+					<if test = "item.equals('구글')">
+						 member_id like '%G'
+					</if>
+					<if test = "item.equals('세탁곰')">
+						member_id not like '%N' and member_id not like '%K' and member_id not like '%G'
+					</if>
+				</foreach>
+				)
+			</if>
+		</trim>
+			ORDER BY member_join desc
+	</select>
+	
+	<!-- 검색 리스트 갯수   -->
+	<select id="searchlistcount" parameterType="HashMap" resultType="int">
+    	SELECT count(*)
+		FROM member
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test = "startDate != null" >
+		 		<![CDATA[(member_join > #{startDate, jdbcType=DATE} and member_join < #{endDate, jdbcType=DATE} or member_join like #{endDate, jdbcType=DATE}||'%')]]>
+			</if>
+			<if test = "keyword != null">
+				and (${searchType} like '%'||#{keyword, jdbcType=VARCHAR}||'%')
+			</if>
+		
+			<if test = "statusArr != null">
+			and (
+				<foreach collection="statusArr" item="item" index="index" separator="or" open="(" close=")">
+					<if test = "item.equals('카카오')">
+						member_id like '%K' 
+					</if>
+					<if test = "item.equals('네이버')">
+						 member_id like '%N'
+					</if>
+					<if test = "item.equals('구글')">
+						 member_id like '%G'
+					</if>
+					<if test = "item.equals('세탁곰')">
+						member_id not like '%N' and member_id not like '%K' and member_id not like '%G'
+					</if>
+				</foreach>
+				)
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 회원상세정보 보기 -->
+	<select	id="detail" parameterType="String" resultMap="adminMemberVO">
+		SELECT member_id, member_name, member_phone, member_email, member_zipcode, member_loc, subs_num
+		FROM member
+		WHERE member_id= #{member_id, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 회원상세정보 수정 -->
+	<update id="detail_update" parameterType="HashMap" >
+		UPDATE member 
+		SET member_name=#{member_name}, member_phone=#{member_phone}, member_email=#{member_email}, 
+			member_zipcode=#{member_zipcode}, member_loc=#{member_loc}, subs_num=#{subs_num,jdbcType=INTEGER}  
+		WHERE member_id= #{member_id, jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.ReviewMapper">
+	<resultMap type="com.spring.community.ReviewVO" id="reviewMap">
+		<result property="review_num" column="review_num"/>
+		<result property="member_id" column="member_id"/>
+		<result property="member_name" column="member_name"/>
+		<result property="review_kind" column="review_kind"/>
+		<result property="review_star" column="review_star"/>
+		<result property="review_content" column="review_content"/>
+		<result property="review_like" column="review_like"/>
+		<result property="review_photo" column="review_photo"/>
+		<result property="review_date" column="review_date"/>
+		<result property="keyfield" column="keyfield"/>		
+		<result property="keyword" column="keyword"/>		
+		<result property="re_condition" column="re_condition"/>						
+	</resultMap>
+	
+	<resultMap type="com.spring.member.MileageVO" id="mileageMap">
+		<result property="member_id" column="member_id"	/>
+		<result property="mile_date" column="mile_date"	/>
+		<result property="mile_price" column="mile_price"/>
+		<result property="mile_content" column="mile_content"/>	
+	</resultMap>
+	
+	<select id="getListCount" resultType="int"> 
+		SELECT COUNT(*) FROM review
+	</select>
+	
+	<select id="getMemberName" parameterType="com.spring.community.ReviewVO" resultType="String">
+		select member_name from MEMBER where member_id = #{member_id}
+		
+	</select>
+	
+	<select id="reviewList" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap">
+		SELECT * FROM review_view  ORDER BY review_num desc       		
+	</select>
+	
+	<!-- <select id="reviewList" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap">
+select r.review_num, r.member_id, r.review_kind, r.review_star, r.review_content, r.review_like, r.review_photo, r.review_date, rv.member_name FROM review r join review_view rv on r.member_id = rv.member_id order by r.review_num DESC;   		
+	</select> -->
+
+	<insert id="reviewInsert" parameterType="com.spring.community.ReviewVO">
+		INSERT INTO review VALUES (REVIEW_SEQ.NEXTVAL,#{member_id},#{review_kind},#{review_star},
+		#{review_content},#{review_like},#{review_photo, jdbcType=VARCHAR}, sysdate ) 
+	</insert>
+	
+	<insert id="insertMileage" parameterType="com.spring.member.MileageVO">
+		INSERT INTO mileage VALUES (#{arg0}, sysdate, #{arg1}, #{arg2}, mile_SEQ.NEXTVAL) 
+	</insert>
+		
+	<select id="reviewSearch" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap">
+	 <bind name="arg1" value="'%'+ arg1 +'%'" />
+		SELECT * FROM REVIEW_view WHERE ${arg0} like #{arg1} ORDER BY review_date DESC    		
+	</select>
+			
+	<select id="reviewCondition1" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap" >
+		SELECT * FROM REVIEW_VIEW ORDER BY review_date DESC
+	</select>	
+	<select id="reviewCondition2" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap" >
+		SELECT * FROM REVIEW_VIEW ORDER BY review_like DESC
+	</select>
+	<select id="reviewCondition3" parameterType="com.spring.community.ReviewVO" resultMap="reviewMap" >
+		SELECT * FROM REVIEW_VIEW ORDER BY review_star DESC
+	</select>
+	
+	<delete id="reviewDelete" parameterType="int" >
+		DELETE FROM review WHERE review_num=#{review_num}
+	</delete> 
+	 
+	<update id="reviewUpdate" parameterType="com.spring.community.ReviewVO">
+		update review set 
+		review_kind = #{review_kind, jdbcType=VARCHAR}, 
+		review_star = #{review_star}, 
+		review_content = #{review_content}, 		
+		review_photo = #{review_photo},
+		review_date = sysdate 	
+		WHERE review_num=#{review_num}
+	</update>
+	
+	<update id="reviewCheck" parameterType="com.spring.community.ReviewVO">
+		update MEMBERORDER set order_review=1 where order_num= #{order_num}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+

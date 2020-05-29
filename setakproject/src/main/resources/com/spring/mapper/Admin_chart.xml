@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.Admin_chart">
+
+	<resultMap type="com.spring.order.OrderVO" id="memberorderTable">
+		<result property="order_num" column="order_num" />
+		<result property="member_id" column="member_id" />
+		<result property="order_date" column="order_date" />
+	</resultMap>
+	
+	<resultMap type="com.spring.order.OrderListVO" id="orderListTable">
+		<result property="order_num" column="order_num" />	
+		<result property="wash_seq" column="wash_seq" />
+		<result property="repair_seq" column="repair_seq" />
+		<result property="keep_seq" column="keep_seq" />		
+	</resultMap>
+
+<!-- 세탁, 수선, 보관 그래프 -->	
+	<!-- 세탁건수-하루단위 -->
+	<select id="wash_count" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (wash_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num
+							FROM memberorder
+							WHERE order_date like #{order_date}||'%')
+			 and wash_seq not like '0'
+	</select>
+	
+	<!-- 수선건수-하루단위 -->
+	<select id="repair_count" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (repair_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num
+							FROM memberorder
+							WHERE order_date like #{order_date}||'%')
+			 and repair_seq not like '0'
+	</select>
+	
+	<!-- 보관건수-하루단위 -->
+	<select id="keep_count" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (keep_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num
+							FROM memberorder
+							WHERE order_date like #{order_date}||'%')
+			 and keep_seq not like '0'
+	</select>
+	
+	<!-- 세탁건수-한달단위 -->
+	<select id="wash_count_month" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (wash_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num 
+                    		FROM memberorder
+                     		WHERE  <![CDATA[ order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+              and wash_seq not like '0'
+	</select>
+	
+	<!-- 수선건수-한달단위 -->
+	<select id="repair_count_month" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (repair_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num 
+                    		FROM memberorder
+                     		WHERE  <![CDATA[ order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+              and repair_seq not like '0'
+	</select>		
+	
+	<!-- 보관건수-한달단위 -->
+	<select id="keep_count_month" parameterType = "java.util.HashMap" resultType="int" >
+		SELECT count (keep_seq) 
+		FROM orderlist
+		WHERE order_num IN (SELECT order_num 
+                    		FROM memberorder
+                     		WHERE  <![CDATA[ order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+              and keep_seq not like '0'
+	</select>				
+	
+<!-- 수익 그래프-->
+	<!-- 세탁, 수선, 보관 수익금액 -->
+	<select id="profit_ssb" parameterType = "java.util.HashMap" resultType="Integer" >
+		SELECT sum(order_price)
+		FROM memberorder
+		WHERE order_date like #{order_date, jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<!-- 정기결제 수익금액 -->
+	<select id="profit_sub" parameterType = "java.util.HashMap" resultType="Integer" >
+		SELECT sum(his_price)
+		FROM subs_history
+		WHERE trunc(his_date) = #{his_date, jdbcType=VARCHAR} 
+	</select>
+</mapper>

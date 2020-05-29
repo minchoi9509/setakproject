@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+      
+<mapper namespace="com.spring.mapper.IPCountMapper">
+	
+	<resultMap type="com.spring.api.IPCountVO" id="IPCountResultMap">
+		<result property="member_ip" column="member_ip" />
+		<result property="member_ipcount" column="member_ipcount" />
+	</resultMap>
+	
+	<select id = "getIPList" parameterType="String" resultType="int">
+		select count(*) from member_phonechk where member_ip = #{member_ip}
+	</select>
+	
+	<select id="countIP" parameterType = "String" resultType="int">
+		select member_ipcount from member_phonechk where member_ip = #{member_ip}
+	</select>
+	
+	<insert id="insertIP" parameterType="String">
+		insert into member_phonechk values(#{member_ip}, 1)
+	</insert>
+	
+	<update id="plusIPCount" parameterType="String">
+		update member_phonechk set member_ipcount = member_ipcount + 1 where member_ip = #{member_ip}
+	</update>
+	
+	
+</mapper>
+

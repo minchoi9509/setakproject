@@ -1,0 +1,382 @@
+@charset "utf-8";
+
+#title {
+	height: 140px;
+}
+.title-text {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+}
+
+.title-text h2 {
+	font-size: 2rem;
+	color: #444;
+}
+/*아래의 width로 파란 줄 길이 조절 가능*/
+.title-text h2:before {
+	content: '';
+	display: block;
+	width: 40%;
+	height: 6px;
+	background-color: #3498db;
+	margin-bottom: 6px;
+	vertical-align: middle;
+}
+
+/*
+   default.css에 body와 a랑 뭐 기타등등 속성들 기본값 저장해놨으니 한번확인해주세요
+   content를 미리 해놨기때문에 자동으로 1200px안에 중앙정렬돼서 출력될겁니다. 참고 >_-(찡긋)
+   폰트사이즈는 무조건 rem으로 작업해주세요.
+   */
+
+#join_section .content{
+	margin:0 auto;
+}
+.content form .input_list{
+	width:500px;
+	text-align:center;
+	margin:0 auto;
+}
+.joinform input {
+	width:450px;
+	padding-left:10px;
+	border: 1px solid #7b7979;
+	border-radius: 3px;
+	line-height: 35px;
+	font-size: 0.8rem;
+}
+
+.input_list input{
+	margin-bottom : 20px; 
+}
+.joinform input:hover::-webkit-input-placeholder {
+    transition: all.4s;
+	font-size:0.7rem;
+	color:#3498db;
+
+}
+.joinform input:hover::-ms-input-placeholder {
+    transition: all.4s;
+	font-size:0.7rem;
+	color:#3498db;
+	
+}
+
+.joinform input:hover::-moz-input-placeholder {
+    transition: all.4s;
+	font-size:0.7rem;
+	color:#3498db;
+	
+}
+
+#member_phone {
+    width:320px;	
+}
+#member_sns {
+    width:320px;	
+}
+#member_zipcode {
+    width:320px;	
+}
+
+.joinform .button {
+	width:120px;
+	margin-left:5px;
+	background-color: #3498db;
+	color:#fff;
+	border:0px;
+}
+
+.joinform h4 {
+    display:none;
+	color: #ff2222;
+	font-size: 0.8rem;
+	text-align:left;
+	margin:-18px 0 3px 20px;
+}
+#authsucess{
+	color: #3498db;
+}
+
+.joinform h5 {
+    display:none;
+	color: #ff2222;
+	font-size: 0.8rem;
+	text-align:left;
+	margin:0 0 0 20px;
+}
+
+.joinform hr {
+    border: 1px solid #3498db;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width:460px;
+}
+#str_email02 {
+	background-color:#fff;
+}
+.clause{
+	width:460px;
+	margin:0 auto;
+}
+.clause span{
+	font-size:0.9rem;
+	font-weight:bold;
+	margin-left:9px;
+}
+
+.clause h4 {
+    display:block;
+	color: #ff2222;
+	font-size: 0.8rem;
+	margin:0 0 0 35px;
+	text-align:left;
+}
+.clause .button {
+	margin-left:10px;
+   
+}
+.join_btn{
+	width:460px;
+	margin:30px auto 0;
+}
+.join_btn .btn {
+    width:100%;
+    background-color:#fff;
+	border:2px solid #3498db;
+	color:#3498db;
+	line-height: 45px;
+	border-radius: 6px;
+	font-size:1rem;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+.join_btn .btn:hover {
+	font-size:1.2rem;
+	transition:all .4s;
+	background-color: #3498db;
+	border:2px solid #fff;
+	color:#fff;
+	font-weight:initial;
+}
+
+#auth_ul{
+	position: relative;
+}
+
+#timer{
+	position: absolute;
+	top: 0.69rem;
+	right: 9.2rem;
+	color: #ef3e3e;
+	font-size:0.9rem;
+    font-weight: bold;
+}
+
+.button{
+	cursor: pointer;
+}
+
+ .button:disabled {
+	background-color: #bbabab;
+	cursor: default; 
+ }
+ 
+ /****반응형UI****/
+@media screen and (max-width:768px) {
+	.title-text h2 {
+		font-size: 2rem;
+		color: #444;
+	}
+	/*아래의 width로 파란 줄 길이 조절 가능*/
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 40%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+
+	#join_section .content{
+		margin:0 auto;
+		margin-top: -40px;
+	}
+	.content form .input_list{
+		width:100%;
+		text-align:center;
+		margin:0 auto;
+	}
+	.joinform input {
+		width:100%;
+		box-sizing:border-box;
+		padding-left:10px;
+		border: 1px solid #7b7979;
+		border-radius: 3px;
+		line-height: 35px;
+		font-size: 0.8rem;
+	}
+
+	.input_list input{
+		margin-bottom : 20px; 
+	}
+	.joinform input:hover::-webkit-input-placeholder {
+		transition: all.4s;
+		font-size:0.7rem;
+		color:#3498db;
+
+	}
+	.joinform input:hover::-ms-input-placeholder {
+		transition: all.4s;
+		font-size:0.7rem;
+		color:#3498db;
+
+	}
+
+	.joinform input:hover::-moz-input-placeholder {
+		transition: all.4s;
+		font-size:0.7rem;
+		color:#3498db;
+
+	}
+
+	#member_phone {
+		width:61%;
+		margin: 0 5px 0 -4px;	
+	}
+	#member_sns {
+		width:61%;
+		margin: 0 5px 0 -4px;
+	}
+	#member_zipcode {
+		width:61%;
+		margin: 0 5px 0 -4px;
+	}
+    #auth_ul {
+		width:100%;
+	}
+	 #auth_ul li{
+    	width:100%;
+    }
+	.joinform .button {
+		width:36%;
+		margin-left:0px;
+		background-color: #3498db;
+		color:#fff;
+		border:0px;
+	}
+
+	.joinform h4 {
+		display:none;
+		color: #ff2222;
+		font-size: 0.7rem;
+		text-align:left;
+		margin:-18px 0 3px 10px;
+	}
+	#authsucess{
+		color: #3498db;
+	}
+
+	.joinform h5 {
+		display:none;
+		color: #ff2222;
+		font-size: 0.8rem;
+		text-align:left;
+		margin:0 0 0 20px;
+	}
+
+	.joinform hr {
+		border: 1px solid #3498db;
+		margin-top: 20px;
+		margin-bottom: 30px;
+		width:100%;
+	}
+	#str_email02 {
+		background-color:#fff;
+	}
+	.clause{
+		width:100%;
+		margin:0 auto;
+	}
+	.clause span{
+		font-size:0.9rem;
+		font-weight:bold;
+		margin-left:9px;
+	}
+
+	.clause h4 {
+		display:block;
+		color: #ff2222;
+		font-size: 0.8rem;
+		margin:0 0 0 35px;
+		text-align:left;
+	}
+	.clause .button {
+		margin-left:10px;
+
+	}
+	.join_btn{
+		width:100%;
+		margin:30px auto 0;
+	}
+	.join_btn .btn {
+		width:100%;
+		background-color:#fff;
+		border:2px solid #3498db;
+		color:#3498db;
+		line-height: 45px;
+		border-radius: 6px;
+		font-size:1rem;
+		cursor:pointer;
+		font-weight:bold;
+	}
+
+	.join_btn .btn:hover {
+		font-size:1.2rem;
+		transition:all .4s;
+		background-color: #3498db;
+		border:2px solid #fff;
+		color:#fff;
+		font-weight:initial;
+	}
+
+	#auth_ul{
+		position: relative;
+	}
+
+	#timer{
+		position: absolute;
+		top: 0.69rem;
+		right: 9.2rem;
+		color: #ef3e3e;
+		font-size:0.9rem;
+		font-weight: bold;
+	}
+
+	.button{
+		cursor: pointer;
+	}
+
+	 .button:disabled {
+		background-color: #bbabab;
+		cursor: default; 
+	 }
+}

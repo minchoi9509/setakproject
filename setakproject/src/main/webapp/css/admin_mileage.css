@@ -1,0 +1,369 @@
+@charset "utf-8";
+
+
+	#search-table {
+    width: 100%;
+    border-top : 2px solid #3498db;
+    border-spacing: 0;
+    font-size : 0.9rem;
+    margin : 10px auto;
+}
+
+#search-div h2 {
+	margin-left : 20px;
+	font-size : 1.2rem;
+}
+
+#search-table td {
+    padding : 15px;
+    border-bottom : 1px solid #D8D8D8;
+}
+
+#search-table td:nth-child(1) {
+    background-color :  #eeefef;
+}
+
+#search-btn {
+    background-color : #3498db;
+    padding : 10px 30px;
+    color: #ffffff;
+	text-align: center;
+	box-shadow : none;
+	border : 0; 
+	cursor : pointer;
+}
+
+#search-btn-div {
+    margin-top : 30px;
+    margin-bottom : 40px;
+    text-align : center;
+}
+
+.search-date-btn {
+    background-color: #eeefef;
+    padding: 6px;
+    color: #444;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 3px;
+    border: 0;
+    font-size: 0.75rem;
+    cursor: pointer;
+    width: 45px;
+}
+
+#insert-table {
+    width: 100%;
+    border-top : 2px solid #3498db;
+    border-spacing: 0;
+    font-size : 0.9rem;
+    margin : 10px auto;
+}
+
+#insert-div h2 {
+	margin-left : 20px;
+	font-size : 1.2rem;
+}
+
+#insert-table td {
+    padding : 15px;
+    border-bottom : 1px solid #D8D8D8;
+}
+
+#insert-table td:nth-child(1) {
+    background-color :  #eeefef;
+}
+
+
+#insert-btn {
+    background-color : #3498db;
+    padding : 10px 30px;
+    color: #fff;
+	text-align: center;
+	box-shadow : none;
+	border : 0;   
+	cursor : pointer;
+}
+
+#insert-btn-div {
+    margin-top : 30px;
+    margin-bottom : 40px;
+    text-align : center;
+}
+
+.insert-date-btn {
+    background-color: #eeefef;
+    padding: 6px;
+    color: #444;
+    text-align: center;
+    box-shadow: none;
+    border-radius: 3px;
+    border: 0;
+    font-size: 0.75rem;
+    cursor: pointer;
+    width: 45px;
+}
+
+.member_id{
+	border-radius: 0px;
+	background: none;
+	border:none;
+}
+
+.mile_price{
+	border:none;
+	background: none;
+	padding-left:40px;
+
+}
+
+.mile_content{
+	border:none;
+	text-align:center;
+	background: none;
+}
+
+
+	.content ul{
+		width:100%;
+		display:flex;
+		justify-content: space-between;
+		border-bottom:1px solid #e1e4e4;
+	}
+	.content li{
+		widht:100%;
+		text-align:center;
+		margin:0 1px;		
+		width:100%;
+		font-size:0.9rem;
+		height:40px;
+		line-height:40px;
+		color:#444;
+	}
+	.content ul li:nth-child(1){
+		width:3%;
+	}
+	.content ul li:nth-child(2){
+		width:25%;
+	}
+	.content ul li:nth-child(3){
+		width:15%;
+	}
+	.content ul li:nth-child(4){
+		width:12%;
+	}
+	.content ul li:nth-child(5){
+		width:35%;
+	}
+	.content ul li:nth-child(6){
+		width:10%;
+	}
+	
+	.mile_title{
+		border-bottom:0px !important;
+	}
+	.mile_title li{
+		background:#3498db;
+		color:#fff;
+		font-size:1rem;
+	}
+    .clickable {
+    	cursor: pointer;
+    }
+    .active{
+    	width:30px;
+    	height:30px;
+    	background:#3498db;
+    	color:white;
+    }
+    .mile_list{
+    	position:relative;
+    }
+    .mile_list ul li a{
+    	color:#444;
+    	cursor:pointer;
+    }
+    #remo{
+    	position:absolute;
+    	color:#444;
+    	font-size:0.93rem;
+    	top:440px;
+    	width:100%;
+    	text-align:center;
+    	border-top:1px solid #3498db;
+    	padding-top:70px;
+    	margin-bottom:50px;
+    }
+    .page-number{
+    	padding:5px 8px;
+    	margin:0 4px;
+    }
+    .checkdelete{
+    	position:absolute;
+    	top:455px;
+    	right:2.2%;
+    	border:0px;
+    	background:#3498db;
+    	color:#fff;
+    	padding:6.5px 6.5px 8px;
+    	border-radius:5px;
+    	cursor:pointer;
+    	z-index:30;
+    }
+    .update:hover{
+        color:#3498db;
+		font-weight:bold;
+	 }
+    .after, .update_count input{
+    	color:#3498db !important;
+    	font-size:0.95rem;
+    	font-weight:bold;
+    	cursor:pointer;
+    }
+    .mile_default{
+		text-align:center;
+		border:0px;
+		background:none;
+		font-size:0.9rem;
+		color:#444;
+		width:100%;
+	}
+    .upadte_select{
+    	border:1px solid #3498db;
+    	color:#3498db;
+    }
+    .popup_back{
+    	width:100%;
+    	height:100vh;
+    	background:#0000007d;
+    	position:fixed;
+    	top:0;
+    	z-index:998;
+    	visibility: hidden;
+    	opacity: 0;
+    }
+	.popup {
+		background:#fff;
+		z-index: 999;
+		width: 1200px;
+		height:466px;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		max-height: calc(100% - 100px);
+		transform: translate(-50%, -50%);
+		transition: all .5s;
+	}
+	.popup_back.popup_on {
+		visibility: visible;
+		opacity: 1;
+	}	
+	.popup .tabs .tab-list{
+		display:flex;
+		justify-content: space-between;
+	}
+	.popup .tabs .tab-list .tab{
+		width:100%;
+		border:2px solid #e1e4e4;
+		height:50px;
+		line-height:50px;
+		text-align:center;
+		color:#444;
+		font-size:1rem;
+	}
+	.popup .tabs .tab-list:nth-child(2){
+		padding:0 0 20px;
+	}
+	.popup .tabs .tab-list:nth-child(2) .tab{
+		border-top:0px;
+	}
+	.popup .tabs .tab-list .tab:nth-child(2){
+		border-left:0px;
+		border-right:0px;
+	}
+	.popup .tabs .tab-list .tab:nth-child(3){
+		border-right:0px;
+	}
+	.popup .tabs .tab-list .tab.tab_active, .mile-list.tab_active{
+		background-color: #3498db;
+		color:#fff;
+	}
+	.tab-content{
+		display:none;
+	}
+	.show{
+		display:block;
+	}
+	.top{
+		display:flex;
+		justify-content: space-between;
+	}
+	.top li{
+		width:100%;
+		height:100px;
+		border:2px solid #e1e4e4;
+		box-sizing:border-box;
+		font-size:1.1rem;
+		padding:25px 0 0 35px ;
+		color:#444;
+	}
+	.top li:nth-child(2){
+		border-left:0px solid;
+		border-right:0px solid;
+	}
+	.top li:nth-child(3){
+		border-right:0px solid;
+	}
+	.top:nth-child(2) li, .top:nth-child(3) li{
+		border-top:0px solid;
+	}
+	.mile-list:hover{
+		background-color: #3498db;
+		color:#fff;
+		cursor:pointer;
+		transition: all .3s;
+	}
+	.popup_count{
+        position:absolute;
+        width:100%;
+        border-top:1px solid #3498db;
+        line-height:40px;
+        bottom:0px;
+        text-align:center;
+	}
+	.popup_count p{
+		display:inline-block;
+		color:#3498db;
+		font-weight:bold;
+		font-size:1.1rem;
+	}
+	.popup_count input{
+		padding:2px 0 2px 30px;
+		margin-left:8px;
+		width:45px;
+	}
+	.mile_button{
+		position:absolute;
+		bottom:-38px;
+		display:flex;
+		justify-content:space-between;
+		width:100%;
+	}
+	.mile_button input{
+		width:49.9%;
+    	background:#3498db;
+    	color:#fff;
+    	border-radius:5px;
+    	cursor:pointer;
+    	z-index:30;
+    	line-height:33px;
+    	font-size:1rem;
+    	border:1px solid #3498db;
+ 		transition:all .3s;
+	}
+	.mile_button input:hover{
+		background:#fff;
+		color:#3498db;
+		border:1px solid #3498db;
+	}
+

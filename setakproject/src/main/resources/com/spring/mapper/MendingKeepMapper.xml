@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.MendingKeepMapper">
+	
+	<insert id="insertMending" parameterType="com.spring.setak.MendingVO">
+		<selectKey keyProperty="repair_seq" resultType="Integer" order="AFTER"> SELECT repair_seq.currval FROM dual </selectKey>
+		insert into repair(repair_seq, repair_cate, repair_kind, repair_var1, repair_var2, repair_var3, repair_content, repair_code, repair_count, repair_price, repair_wash, repair_now, repair_file) 
+		values (repair_seq.nextval, #{repair_cate}, #{repair_kind}, #{repair_var1}, #{repair_var2}, #{repair_var3}, #{repair_content}, #{repair_code}, #{repair_count}, #{repair_price}, #{repair_wash}, #{repair_now, jdbcType = VARCHAR}, #{repair_file})
+	</insert>
+	
+	<insert id="insertMendingCart" parameterType="com.spring.order.MendingCartVO">
+		insert into repair_cart(member_id, repair_seq, repair_code)
+		values (#{member_id}, #{repair_seq}, #{repair_code, jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertKeep" parameterType="com.spring.setak.KeepVO">
+		<selectKey keyProperty="keep_seq" resultType="Integer" order="AFTER"> SELECT keep_seq.currval FROM dual </selectKey>
+		insert into keep(keep_seq, keep_cate, keep_kind, keep_count, keep_month, keep_box, keep_price, keep_start, keep_end, keep_wash, keep_now) 
+		values (keep_seq.nextval, #{keep_cate}, #{keep_kind}, #{keep_count}, #{keep_month}, #{keep_box}, #{keep_price}, #{keep_start}, #{keep_end}, #{keep_wash}, #{keep_now, jdbcType = VARCHAR})
+	</insert>
+	
+	<insert id="insertKeepCart" parameterType="com.spring.order.KeepCartVO">
+		insert into keep_cart(member_id, keep_seq, keep_group)
+		values (#{member_id}, #{keep_seq}, #{keep_group})
+	</insert>
+	
+	<insert id="insertWash" parameterType="com.spring.setak.WashingVO">
+		<selectKey keyProperty="wash_seq" resultType="Integer" order="AFTER"> SELECT wash_seq.currval FROM dual </selectKey>
+		insert into washing(wash_seq, wash_cate, wash_kind, wash_method, wash_count, wash_price, wash_now) 
+		values (wash_seq.nextval, #{wash_cate}, #{wash_kind}, #{wash_method}, #{wash_count}, #{wash_price}, #{wash_now, jdbcType = VARCHAR})
+	</insert>
+	
+	<insert id="insertWashingCart" parameterType="com.spring.order.WashingCartVO">
+		insert into wash_cart(member_id, wash_seq)
+		values (#{member_id}, #{wash_seq})
+	</insert>
+	
+	
+</mapper>

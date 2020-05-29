@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.CartMapper">
+
+	<resultMap type="com.spring.order.WashingCartVO" id="WashingCartResultMap">
+		<result property="member_id" column="member_id" />
+		<result property="wash_seq" column="wash_seq" />
+	</resultMap>
+	
+	<resultMap type="com.spring.order.MendingCartVO" id="MendingCartResultMap">
+		<result property="member_id" column="member_id" />
+		<result property="repair_seq" column="repair_seq" />
+	</resultMap>
+	
+	<resultMap type="com.spring.order.KeepCartVO" id="KeepCartResultMap">
+		<result property="member_id" column="member_id" />
+		<result property="keep_seq" column="keep_seq" />
+		<result property="keep_group" column="keep_group" />
+	</resultMap>
+	
+	<resultMap type="com.spring.setak.WashingVO" id="WashingResultMap">
+		<result property="wash_seq" column="wash_seq" />
+		<result property="wash_cate" column="wash_cate" />
+		<result property="wash_kind" column="wash_kind" />
+		<result property="wash_method" column="wash_method" />
+		<result property="wash_count" column="wash_count" />
+		<result property="wash_price" column="wash_price" />
+	</resultMap>
+	
+	<resultMap type="com.spring.setak.MendingVO" id="MendingResultMap">
+		<result property="repair_seq" column="repair_seq" />
+		<result property="repair_cate" column="repair_cate" />
+		<result property="repair_kind" column="repair_kind" />
+		<result property="repair_var1" column="repair_var1" />
+		<result property="repair_var2" column="repair_var2" />
+		<result property="repair_var3" column="repair_var3" />
+		<result property="repair_content" column="repair_content" />
+		<result property="repair_code" column="repair_code" />
+		<result property="repair_count" column="repair_count" />
+		<result property="repair_price" column="repair_price" />
+		<result property="repair_file" column="repair_file" />
+		<result property="repair_wash" column="repair_wash" />
+	</resultMap>
+	
+	<resultMap type="com.spring.setak.KeepVO" id="KeepResultMap">
+		<result property="keep_seq" column="keep_seq" />
+		<result property="keep_cate" column="keep_cate" />
+		<result property="keep_kind" column="keep_kind" />
+		<result property="keep_count" column="keep_count" />
+		<result property="keep_month" column="keep_month" />
+		<result property="keep_box" column="keep_box" />
+		<result property="keep_price" column="keep_price" />
+		<result property="keep_start" column="keep_start" />
+		<result property="keep_end" column="keep_end" />
+		<result property="keep_wash" column="keep_wash" />
+		<result property="keep_file" column="keep_file" />
+	</resultMap>
+	
+	<!-- 세탁 장바구니 시퀀스 읽기 -->
+	<select id = "getWashSeq" parameterType = "String" resultMap = "WashingCartResultMap">
+		select wash_seq from wash_cart where member_id = #{member_id} order by wash_seq
+	</select>
+	
+	<!-- 수선 장바구니 시퀀스 읽기 -->
+	<select id = "getMendingSeq" parameterType = "String" resultMap = "MendingCartResultMap">
+		select repair_seq from repair_cart where member_id = #{member_id} order by repair_seq
+	</select>
+	
+	<!-- 보관 장바구니 시퀀스 읽기 -->
+	<select id = "getKeepSeq" parameterType = "String" resultMap = "KeepCartResultMap">
+		select keep_seq from keep_cart where member_id = #{member_id} order by keep_seq
+	</select>
+
+	<!-- 세탁 장바구니 데이터 읽기 --> 
+	<select id = "getWashingList" parameterType = "int" resultMap = "WashingResultMap">
+		select * from wash_view where wash_seq = #{wash_seq} order by wash_seq
+	</select>	
+
+	<!-- 수선 장바구니 데이터 읽기 -->
+	<select id = "getMendingList" parameterType = "int" resultMap = "MendingResultMap">
+		select * from repair_view where repair_seq = #{repair_seq} order by repair_seq
+	</select>
+	
+	<!-- 보관 장바구니 데이터 읽기 -->
+	<select id = "getKeepList" parameterType = "int" resultMap = "KeepResultMap">
+		select * from keep_view where keep_seq = #{keep_seq} order by keep_seq
+	</select>
+	
+	<!-- 보관 그룹별 리스트 검색 -->	
+	<select id = "getKeepGroupList" parameterType = "java.util.HashMap" resultMap = "KeepResultMap">
+		select * from keep_view where keep_group = #{keep_group} and member_id = #{member_id}
+	</select>
+	
+	<!-- 세탁 장바구니 비우기  > 장바구니 -->
+	<delete id = "deleteWashCart" parameterType = "int">
+		delete from wash_cart where wash_seq = #{wash_seq}
+	</delete>
+	
+	<!-- 세탁 상품 지우기 -->	
+	<delete id = "deleteWash" parameterType = "int">
+		delete from washing where wash_seq = #{wash_seq}
+	</delete>
+	 
+	<!-- 수선 장바구니 비우기  > 장바구니 -->
+	<delete id = "deleteMendingCart" parameterType = "int">
+		delete from repair_cart where repair_seq = #{repair_seq}
+	</delete>
+	
+	<!-- 수선 상품 지우기 -->	
+	<delete id = "deleteMending" parameterType = "int">
+		delete from repair where repair_seq = #{repair_seq}
+	</delete>
+	 	
+	<!-- 보관 장바구니 비우기  > 장바구니  -->
+	<delete id = "deleteKeepCart" parameterType = "String">
+		delete from keep_cart where member_id = #{member_id} 
+	</delete>
+	
+	<!-- 보관 상품 지우기 -->	 
+	<delete id = "deleteKeep" parameterType = "int">
+		delete from keep where keep_seq = #{keep_seq}
+	</delete>	
+	
+	
+</mapper>

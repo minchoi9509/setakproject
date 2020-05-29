@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.Admin_MendingMapper">
+	
+	<resultMap type = "java.util.HashMap" id="hashmapVO">
+		<result property="repair_rnum" column="rnum" />
+		<result property="repair_seq" column="repair_seq" />
+		<result property="order_num" column="order_num" />
+		<result property="member_id" column="member_id" />
+		<result property="repair_cate" column="repair_cate" />
+		<result property="repair_kind" column="repair_kind" />
+		<result property="repair_var1" column="repair_var1" />
+		<result property="repair_var2" column="repair_var2" />
+		<result property="repair_var3" column="repair_var3" />
+		<result property="repair_content" column="repair_content" />
+		<result property="repair_code" column="repair_code" />
+		<result property="repair_count" column="repair_count" />
+		<result property="repair_now" column="repair_now" />
+		<result property="repair_file" column="repair_file" />
+	</resultMap>
+	
+	<select id="getMendingList" resultMap="hashmapVO">
+		select rownum rnum, repair_seq, member_id, order_num, repair_cate, repair_kind, repair_var1, repair_var2, repair_var3, repair_content, repair_code, repair_count, repair_now, repair_file
+		from (select rownum rnum, b.repair_seq, b.order_num, a.member_id, c.repair_cate, c.repair_kind, c.repair_var1, c.repair_var2, c.repair_var3, c.repair_content, c.repair_code, c.repair_count, c.repair_now, c.repair_file 
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join repair c
+		        on b.repair_seq = c.repair_seq
+		        where b.repair_seq > 0
+		        order by c.repair_seq desc)
+	</select>
+	
+ 	<update id="updateMending" parameterType="com.spring.setak.MendingVO">
+		update repair set repair_cate = #{repair_cate}, repair_kind = #{repair_kind}, repair_var1 = #{repair_var1}, repair_var2 = #{repair_var2}, repair_var3 = #{repair_var3}, repair_content = #{repair_content}, repair_count = #{repair_count}, repair_code = #{repair_code}, repair_now = #{repair_now} where repair_seq=#{repair_seq}
+	</update>
+	
+	<delete id="deleteMending" parameterType="int">
+		delete from repair where repair_seq = #{repair_seq}
+	</delete>
+	
+	<select id="mendingSearch" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select rownum rnum, repair_seq, member_id, order_num, repair_cate, repair_kind, repair_var1, repair_var2, repair_var3, repair_content, repair_code, repair_count, repair_now, repair_file
+		from (select rownum rnum, b.repair_seq, b.order_num, a.member_id, c.repair_cate, c.repair_kind, c.repair_var1, c.repair_var2, c.repair_var3, c.repair_content, c.repair_code, c.repair_count, c.repair_now, c.repair_file 
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join repair c
+		        on b.repair_seq = c.repair_seq
+		        where b.repair_seq > 0
+			<if test = "keyword != null">
+				and (a.member_id like '%'||#{keyword, jdbcType=VARCHAR}||'%')
+			</if>
+				order by c.repair_seq desc)
+	</select>
+	
+	<select id="mendingLoadImg" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select repair_file from repair where repair_seq = #{repair_seq}	
+	</select>
+	
+	<update id="deleteMendingImg" parameterType="string">
+		update repair set repair_file = '' where repair_file = #{repair_file}
+	</update>
+	
+	<update id="MendingImg" parameterType="java.util.HashMap">
+		update repair b
+		set b.repair_file = #{repair_file}
+		where b.repair_code = #{repair_code}
+		and exists (select 1
+					from orderlist a
+					where a.repair_seq = b.repair_seq
+					and a.order_num = #{order_num})
+	</update>
+	
+</mapper>

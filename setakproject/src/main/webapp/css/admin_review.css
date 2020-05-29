@@ -1,0 +1,153 @@
+@charset "UTF-8";
+	
+	#remo{    	
+    	color:#444;
+    	font-size:0.93rem;   	
+    	width:100%;
+    	text-align:center;
+    	border-top:1px solid #3498db;
+    	padding-top: 70px;
+    	margin-bottom: 50px;
+    }
+	
+    .page-number{
+    	padding:5px 8px;
+    	margin:0 4px;
+    }
+		
+	
+	input[type=button]{ cursor:pointer; WIDTH:45pt; HEIGHT:25pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-size:0.55rem;
+	   }
+	input[type=submit]{ cursor:pointer; WIDTH:45pt; HEIGHT:25pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-size:0.55rem;
+	   }
+	button{ cursor:pointer; WIDTH:45pt; HEIGHT:25pt;   
+	   color:#fff; background-color:#3498db;
+	   border-top-left-radius: 5px; border-bottom-left-radius: 5px; 
+	   border-top-right-radius: 5px; border-bottom-right-radius: 5px; border:none;
+	   outline: none; margin:5px; text-align: center; font-size:0.55rem;
+	   }
+
+	.content ul{
+		width:100%;
+		display:flex;
+		justify-content: space-between;
+		border-bottom:1px solid #e1e4e4;
+	}
+	.content li{
+		widht:100%;
+		text-align:center;
+		margin:0 1px;		
+		width:100%;
+		font-size:0.9rem;
+		height:40px;
+		line-height:40px;
+		color:#444;
+	}
+	
+	.content li:nth-child(1)
+	{
+		width:30px;
+	}
+	
+	.content li:nth-child(2),.content li:nth-child(3),.content li:nth-child(4),
+	.content li:nth-child(6),.content li:nth-child(8),.content li:nth-child(9)
+	{
+		width:70px;
+	}
+    .content li:nth-child(7){
+		width:200px;
+	}
+	.content li:nth-child(5){
+		width:350px;
+	}
+	
+	
+	.review_num{
+		width:inherit;
+		text-align:center;
+		background:none;
+		border:0px;
+		color:#444;
+		
+	}
+	.member_id{
+		width:inherit;
+		text-align:center;
+		background:none;
+		border:0px;
+		color:#444;
+		
+	}
+	.review_kind{
+		width:inherit;
+		text-align:center;
+		background:none;
+		border:0px;
+		color:#444;
+		
+	}
+	.review_star{
+		width:inherit;
+		text-align:center;
+		background:none;
+		border:0px;
+		color:#444;
+		
+	}
+	.review_content{
+		width:inherit;
+		text-align:left;
+		background:none;
+		border:0px;
+		color:#444;
+		text-overflow: ellipsis;
+	    white-space: nowrap;
+	    word-wrap: normal;  
+	    overflow: hidden;
+		
+	}
+	.review_like{
+		padding-left:10px;
+		width:inherit;
+		text-align:left;
+		background:none;
+		border:0px;
+		color:#444;
+		text-overflow: ellipsis;
+	    white-space: nowrap;
+	    word-wrap: normal;  
+	    overflow: hidden;
+		
+	}
+	.review_photo{
+		width:inherit;
+		text-align:left;
+		background:none;
+		border:0px;
+		color:#444;
+		
+	}
+	.review_date{
+		width:inherit;
+		text-align:center;
+		background:none;
+		border:0px;
+		color:#444;
+		text-overflow: ellipsis;
+	    white-space: nowrap;
+	    word-wrap: normal;  
+	    overflow: hidden;
+		
+	}
+	
+	
+	
+	

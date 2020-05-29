@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.CommentMapper">
+
+	<resultMap type="com.spring.community.CommentVO" id="commentMap">
+		<result property="qna_num" column="qna_num"/> <!-- 원글의 번호  -->
+		<result property="qna_seq" column="qna_seq"/> <!-- 답변의 갯수(원글에 대한) -->	
+		<result property="qna_content" column="qna_content"/> <!-- 답변의 내용 --> 	
+		<result property="memebr_id" column="memebr_id"/> <!-- 작성자 ID --> 	
+	</resultMap>
+	
+	<select id="commentList" parameterType="com.spring.community.CommentVO" resultMap="commentMap">
+		SELECT * FROM QNA_REQUEST WHERE qna_num=#{qna_num} ORDER BY QNA_SEQ ASC
+	</select>
+	
+	<select id="cntListCount" resultType="int">
+		SELECT COUNT(*) FROM QNA_REQUEST
+	</select>
+	
+	<insert id="commentInsert" parameterType="com.spring.community.CommentVO">
+		INSERT INTO QNA_REQUEST VALUES (#{qna_seq}, #{qna_num}, #{qna_content}, #{member_id}) 
+	</insert>
+	
+	<select id="maxNum" resultType="int">
+		SELECT MAX(qna_seq) FROM QNA_REQUEST
+	</select>
+		
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM QNA_REQUEST WHERE qna_seq=#{qna_seq}
+	</delete>
+	
+	 
+	<update id="commentUpdate" parameterType="com.spring.community.CommentVO">
+		UPDATE QNA_REQUEST SET qna_content=#{qna_content} WHERE qna_seq=#{qna_seq}
+	</update>
+
+ 	<select id="ad_commentList" parameterType="com.spring.community.CommentVO" resultMap="commentMap">
+		SELECT * FROM QNA_REQUEST where qna_num= #{qna_num} ORDER BY qna_seq ASC
+	</select>
+ 
+ 
+ 
+ 
+ 
+</mapper>	

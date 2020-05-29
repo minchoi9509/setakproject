@@ -1,0 +1,463 @@
+@charset "UTF-8";
+
+ *:focus { outline:none; }
+/* 타이틀 부분 */
+.title-text {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+}
+.title-text h2 {
+	font-size: 2rem;
+	color: #444;
+}
+.title-text h2:before {
+	content: '';
+	display: block;
+	width: 40%;
+	height: 6px;
+	background-color: #3498db;
+	margin-bottom: 6px;
+	vertical-align: middle;
+}
+
+/* 세탁 바디 */
+.setakmain{
+	padding-top: 150px;	
+}
+
+.setakmain p{
+    color: #3498db;
+    font-size: 0.9rem;
+    font-weight: bold;
+}	
+
+/* 화살표 이미지 */
+.step img{
+		width:100%;
+		margin-bottom:60px;
+	}
+
+/* 카테고리 테이블 */
+.setakmain .tabs{
+		width:1200px;
+}
+.setakmain .tabs .tab-list{
+	margin-top:20px;
+	display:flex;
+	justify-content: space-between;
+}
+.setakmain .tabs .tab-list:last-child{
+	margin:0 0 20px 0;
+}
+.setakmain .tabs .tab-list .tab{
+	width:100%;
+	border:2px solid #e1e4e4;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	color:#444;
+	font-size:1rem;
+}
+.setakmain .tabs .tab-list .tab:nth-child(2){
+	border-left:0px solid ;
+	border-right:0px solid ;
+}
+.setakmain .tabs .tab-list .tab:nth-child(3){
+	border-right:0px solid ;
+}
+.setakmain .tabs .tab-list:last-child .tab{
+	border-top:0px solid;
+}
+.setakmain .tabs .tab-list .tab.active{
+	background-color: #3498db;
+	color:#fff;
+}
+.setakmain .tab .active{
+	background-color: #3498db;
+	color: #fff;
+	font-weight: bold; 
+}
+
+/* 메뉴 테이블 */
+.top{
+	display:flex;
+	justify-content: space-between;
+}
+.top li{
+	width:100%;
+	height:100px;
+	border:2px solid #e1e4e4;
+	padding:25px 0 0 35px;
+	box-sizing:border-box;
+	font-size:1.1rem;
+	color:#444;
+}
+.top li:nth-child(2){
+	border-left:0px solid;
+	border-right:0px solid;
+}
+.top li:nth-child(3){
+	border-right:0px solid;
+}
+.top:nth-child(2) li, .top:nth-child(3) li{
+	border-top:0px solid;
+}
+.top li span{
+	float:right;
+	padding:5px 30px 0 0;
+	font-size:0.9rem;
+}
+.top li span:nth-child(5){
+	padding-right:1px;
+}
+
+.downlist:hover{
+	background-color: #3498db;
+	color:#fff;
+	cursor:pointer;
+	transition: all .3s;
+}
+
+.menulist{
+	width : 100%;
+	height:  85px;
+	border-spacing: 0px;  
+	table-layout: fixed; 
+	border-color: e1e4e4;
+	font-family: 'Nanum Gothic';
+	display: none;
+	margin-bottom: 20px;
+}
+
+.show{
+	display: table;
+}
+
+/* 가격 테이블 */
+#pricetable{
+	margin:10px 0;
+	width:100%;
+	text-align:center;
+}
+#pricetable tr{
+	height:70px;
+}
+#pricetable tr td{
+	box-sizing:border-box;
+	border-bottom:2px solid #e1e4e4;
+	width:24%;
+}
+#pricetable tr td:first-child{
+	width:7%;
+}
+#pricetable tr td:nth-child(2){
+	width:21%;
+}
+#pricetable .pricemenu{
+	background-color:#3498db;
+	color:#fff;
+	height:40px;
+}
+#pricetable .pricemenu tr td{
+	border:1px solid;
+}
+
+.howsetak{
+	height:22px;
+}
+
+
+.hidetext{
+	display: none;
+}
+.downlist{
+	cursor: pointer;
+	padding: 20px;
+}
+
+.total p{
+	background-color:#e1e4e4;
+	height:40px;
+	line-height:40px;
+	color:#444;
+	text-align:right;
+	padding-right:15px;
+}
+.total-button{
+	padding:40px 0;
+	position: relative;
+   	top: 35%;
+}
+.total-button input{
+	font-size:0.95rem;
+	display:block;
+	width:90px;
+	background-color:#e1e4e4;
+	color:#444;
+	border-radius:30px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	float:right;
+	margin: 0 5px;
+	border:0px;
+}
+.total-button input:hover{
+	background-color:#3498db;
+	color:#fff;
+	transition:all .4s;
+	cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+	.title-text {
+		position: absolute;
+		right: 0;
+		left: 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+		-moz-box-pack: center;
+		-moz-box-align: center;
+		-ms-box-pack: center;
+		-ms-box-align: center;
+	}
+	.title-text h2 {
+		font-size: 1.8rem;
+		color: #444;
+	}
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 40%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+	
+	/* 세탁 바디 */
+	.setakmain{
+		padding-top: 80px;	
+	}
+	
+	.setakmain p{
+	    color: #3498db;
+	    font-size: 0.9rem;
+	    font-weight: bold;
+	}	
+	
+	/* 화살표 이미지 */
+	.step img{
+		width:100%;
+		margin-bottom:10px;
+	}
+	
+	/* 카테고리 테이블 */
+	.setakmain .tabs{
+		width:100%;
+	}
+	.setakmain .tabs .tab-list{
+		margin-top:20px;
+		display:flex;
+		justify-content: space-between;
+	}
+	.setakmain .tabs .tab-list:last-child{
+		margin:0 0 20px 0;
+	}
+	.setakmain .tabs .tab-list .tab{
+		width:100%;
+		border:2px solid #e1e4e4;
+		height:40px;
+		line-height:40px;
+		text-align:center;
+		color:#444;
+		font-size:1rem;
+	}
+	.setakmain .tabs .tab-list .tab:nth-child(2){
+		border-left:0px solid ;
+		border-right:0px solid ;
+	}
+	.setakmain .tabs .tab-list .tab:nth-child(3){
+		border-right:0px solid ;
+	}
+	.setakmain .tabs .tab-list:last-child .tab{
+		border-top:0px solid;
+	}
+	.setakmain .tabs .tab-list .tab.active{
+		background-color: #3498db;
+		color:#fff;
+	}
+	.setakmain .tab .active{
+		background-color: #3498db;
+		color: #fff;
+		font-weight: bold; 
+	}
+	
+	/* 메뉴 테이블 */
+	.top{
+		display:flex;
+		justify-content: space-between;
+	}
+	.top li{
+		width:100%;
+		height:89px solid #e1e4e4;
+		padding:12px 0 0 5px;
+		box-sizing:border-box;
+		font-size:0.9rem;
+		color:#444;
+		position:relative;
+	}
+	.top li:nth-child(2){
+		border-left:0px solid;
+		border-right:0px solid;
+	}
+	.top li:nth-child(3){
+		border-right:0px solid;
+	}
+	.top:nth-child(2) li, .top:nth-child(3) li{
+		border-top:0px solid;
+	}
+	.top li span{
+		position:absolute;
+		float:right;
+		padding:0px 0px 0 0;
+		font-size:0.8rem;
+		bottom:15px;
+	}
+	.top li span:nth-child(3){
+		right:8px;
+	}
+	.top li span:nth-child(5){
+		right:20px;
+	}
+	
+	.downlist:hover{
+		background-color: #3498db;
+		color:#fff;
+		cursor:pointer;
+		transition: all .3s;
+	}
+	
+	.menulist{
+		width : 100%;
+		height:  85px;
+		border-spacing: 0px;  
+		table-layout: fixed; 
+		border-color: e1e4e4;
+		font-family: 'Nanum Gothic';
+		display: none;
+		margin-bottom: 20px;
+	}
+	
+	.show{
+		display: table;
+	}
+	
+	/* 가격 테이블 */
+	#pricetable{
+		margin:10px 0;
+		width:100%;
+		text-align:center;
+	}
+	#pricetable tr{
+		height:70px;
+	}
+	#pricetable tr td{
+		box-sizing:border-box;
+		border-bottom:2px solid #e1e4e4;
+		width:16%;
+		font-size:0.9rem;
+	}
+	#pricetable tr td:first-child{
+		width:7%;
+	}
+	#pricetable tr td:nth-child(2){
+		width:33%
+	}
+	#pricetable tr td:nth-child(3){
+        width:28%
+	}
+	#pricetable .pricemenu{
+		background-color:#3498db;
+		color:#fff;
+		height:40px;
+	}
+	#pricetable .pricemenu tr td{
+		border:1px solid;
+	}
+	.howsetak{
+		height:30px;
+		width:70px;
+	}
+	.qnum{
+		width:35px;
+	}
+	
+	.hidetext{
+		display: none;
+	}
+	.downlist{
+		cursor: pointer;
+		padding: 20px;
+	}
+	
+	.total p{
+		background-color:#e1e4e4;
+		height:40px;
+		line-height:40px;
+		color:#444;
+		text-align:right;
+		padding-right:15px;
+		font-size:0.85rem;
+	}
+	.total-button{
+		padding:30px 0;
+		position: relative;
+	   	top: 35%;
+	}
+	.total-button input{
+		font-size:0.8rem;
+		display:block;
+		width:70px;
+		background-color:#e1e4e4;
+		color:#444;
+		border-radius:30px;
+		height:35px;
+		line-height:35px;
+		text-align:center;
+		float:right;
+		margin: 0 5px;
+		border:0px;
+	}
+	.total-button input:hover{
+		background-color:#3498db;
+		color:#fff;
+		transition:all .4s;
+		cursor: pointer;
+	}
+}

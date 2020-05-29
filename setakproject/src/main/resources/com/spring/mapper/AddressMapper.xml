@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+      "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+      
+<mapper namespace="com.spring.mapper.AddressMapper">
+      
+	<resultMap type="com.spring.order.AddressVO" id="AddressResultMap">
+		<result property="address_num" column="address_num" />
+		<result property="member_id" column="member_id" />
+		<result property="address_name" column="address_name" />
+		<result property="address_human" column="address_human" />
+		<result property="address_phone" column="address_phone" />
+		<result property="address_zipcode" column="address_zipcode" />
+		<result property="address_loc" column="address_loc" />
+	</resultMap>
+	
+	<!-- 배송지 리스트 -->
+	<select id = "getAddressList" parameterType = "String" resultMap = "AddressResultMap">
+		select * from address where member_id = #{member_id}
+	</select>
+
+	<!-- 배송지 선택 -->
+	<select id = "searchAddress" parameterType = "com.spring.order.AddressVO" resultMap = "AddressResultMap">
+		select * from address where address_num = #{address_num}
+	</select>
+		
+	<!-- 배송지 추가 -->
+	<insert id = "insertAddress" parameterType = "com.spring.order.AddressVO">
+		insert into address values(address_seq.nextval, #{member_id}, #{address_name}, #{address_human}, #{address_phone}, #{address_zipcode}, #{address_loc})
+	</insert>
+	
+	<!-- 배송지 삭제 -->
+	<delete id = "deleteAddress" parameterType = "int">
+		delete from address where address_num = #{address_num} 
+	</delete>
+	
+	<!-- 배송지 수정 -->
+	<update id="updateAddress" parameterType = "com.spring.order.AddressVO">
+		update address set address_name = #{address_name}, address_human = #{address_human}, address_phone = #{address_phone},
+		address_zipcode = #{address_zipcode}, address_loc = #{address_loc} where address_num = #{address_num}
+	</update>
+	
+	<!-- 배송지 개수 제한 -->
+	<select id = "getAddressCount" parameterType = "com.spring.order.AddressVO" resultType = "int">
+		select count(*) from address where member_id = #{member_id}
+	</select>
+
+</mapper>

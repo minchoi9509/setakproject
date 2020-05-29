@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.Admin_order">
+
+	<resultMap type="com.spring.order.OrderVO" id="OrderResultMap">
+		<result property="order_num" column="order_num" />
+		<result property="member_id" column="member_id" />
+		<result property="order_date" column="order_date" />
+		<result property="order_phone" column="order_phone" />
+		<result property="order_price" column="order_price" />
+		<result property="order_payment" column="order_payment" />
+		<result property="order_delicode" column="order_delicode" />
+		<result property="order_cancel" column="order_cancel" />
+		<result property="order_status" column="order_status" />
+		<result property="order_pickup" column="order_pickup" />
+		<result property="order_name" column="order_name" />
+		<result property="order_address" column="order_address" />
+		<result property="order_request" column="order_request" />
+		<result property="order_zipcode" column="order_zipcode" />
+		<result property="order_delete" column="order_delete" />
+		<result property="order_muid" column="order_muid" />
+	</resultMap>
+	
+	<resultMap type="com.spring.community.QnaVO" id="QnaResultMap">	
+		<result property="qna_num" column="qna_num" />
+		<result property="qna_type" column="qna_type" />
+		<result property="qna_title" column="qna_title" />
+		<result property="qna_date" column="qna_date" />
+	</resultMap>
+	
+	<resultMap type="com.spring.admin_order.FullCalendar" id="CalendarResultMap">	
+		<result property="id" column="cal_num" />
+		<result property="title" column="cal_title" />
+		<result property="start" column="cal_start" />
+		<result property="end" column="cal_end" />
+	</resultMap>
+	
+	<!-- 전체 주문 테이블  : 시간 역순 -->	
+	<select id = "getOrderList" parameterType="java.util.HashMap" resultMap = "OrderResultMap">
+		select order_num, member_id, order_name, order_price, order_date, order_delicode, order_status from 
+		(select rownum as rnum, order_num, member_id, order_name, order_price, order_date, order_delicode, order_status from memberorder order by order_date desc) 
+		where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!-- 전체 주문 개수  -->
+	<select id = "getOrderCount" resultType = "int">
+		select count(*) from memberorder
+	</select>
+		
+	<!-- 주문 검색   -->
+	<select id = "orderSearch" parameterType="java.util.HashMap" resultMap="OrderResultMap">
+		select order_num, member_id, order_name, order_price, order_date, order_delicode, order_status from 
+		(select rownum as rnum, order_num, member_id, order_name, order_price, order_date, order_delicode, order_status
+		from memberorder
+		where <![CDATA[(order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+		<if test = 'keyword != null'>
+		and (${searchType} like '%'||#{keyword, jdbcType=VARCHAR }||'%')
+		</if>
+		<if test = 'statusArr != null'>
+			and order_status in
+			<foreach collection='statusArr' index='index' item='item' open='(' close=')' separator=','>
+				#{item}			
+			</foreach>
+		</if>
+		<if test = "orderBy.equals('byDate')">
+			order by order_date desc
+		</if>
+		<if test = "orderBy.equals('byDateReverse')">
+			order by order_date
+		</if>
+		<if test = "orderBy.equals('byName')">
+			order by order_name
+		</if>
+		) where rnum between #{startrow} and #{endrow}
+	</select>
+
+	<!-- 주문 검색 갯수 -->
+	<select id = "orderSearchCount" parameterType="java.util.HashMap" resultType="int">
+		select count(*)
+		from memberorder
+		where <![CDATA[(order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+		<if test = "keyword != null">
+		and (${searchType} like '%'||#{keyword}||'%')
+		</if>
+		<if test = "statusArr != null">
+			and order_status in
+			<foreach collection='statusArr' index='index' item='item' open='(' close=')' separator=','>
+				#{item}			
+			</foreach>
+		</if>
+		order by order_date desc
+	</select>
+	
+	<!-- 선택 주문 정보 -->
+	<select id = "getOrderInfo" parameterType = "com.spring.order.OrderVO" resultMap = "OrderResultMap">
+		select * from memberorder where order_num = #{order_num}
+	</select>
+	
+	<!-- 선택 주문 정보 수정 -->
+	<update id="updateOrderInfo" parameterType = "com.spring.order.OrderVO">
+		update memberorder set order_phone = #{order_phone, jdbcType = VARCHAR}, order_delicode = #{order_delicode, jdbcType = VARCHAR}, order_status = #{order_status, jdbcType = VARCHAR},
+		order_name = #{order_name, jdbcType = VARCHAR}, order_address = #{order_address, jdbcType = VARCHAR}, order_request = #{order_request, jdbcType = VARCHAR} where order_num = #{order_num}
+	</update>
+	
+	<!-- 선택 주문 상태 수정  -->
+	<update id="statusUpdate" parameterType="java.util.HashMap">
+		update memberorder set order_status = #{order_status} 
+		where
+		<foreach collection ='orderNumArr' item='item' separator = 'or'>
+			order_num = #{item} 
+		</foreach>
+	</update>
+	
+	<!-- 최근 5일간 주문 상태별 주문 개수 -->
+	<select id = "recentOrderStatusCnt" parameterType = "java.util.HashMap" resultType="int">
+		select count(*) from memberorder where order_status = #{order_status} and order_date like #{order_date}||'%'
+	</select>
+	
+	<!-- 최근 5일간 주문 개수  -->
+	<select id = "recentOrderCnt" parameterType = "java.util.HashMap" resultType="int">
+		select count(*) from memberorder where order_date like #{order_date}||'%'
+	</select>	
+	
+	<select id = "recentOrderWeeklyCnt" parameterType="java.util.HashMap" resultType="int">
+		select count(*)
+		from memberorder
+		where <![CDATA[(order_date > #{startDate} and order_date < #{endDate} or order_date like #{endDate}||'%')]]>
+	</select>
+	
+	<!-- 미답변 Q&A 목록-->
+	<select id = "getQnAList" resultMap="QnaResultMap">
+		<![CDATA[select * from (select rownum rnum, qna_type, qna_title, qna_date from qna 
+		where qna_check = '답변대기' order by qna_date desc) 
+		where rnum >= 1 and rnum <= 5]]>	
+	</select>
+	
+	<!-- 신규 가입자 > 최근 일주일  -->
+	<select id = "getNewMemberCnt" resultType = "int">
+		<![CDATA[select count(*) from member where trunc(member_join) >= sysdate -7 and trunc(member_join) <= sysdate]]>
+	</select>
+	
+	<!-- 처리해야 할 주문 4개 -->
+	<select id = "getProcessOrderList" resultMap = "OrderResultMap">
+		<![CDATA[select order_num, order_status, order_price, order_date from 
+		(select rownum rnum, order_num, order_status, order_price, order_date from 
+		(select * from memberorder where order_status = '결제완료' order by order_date desc)) 
+		where rnum <= 4]]>
+	</select>
+	
+	<!-- 처리 해야 할  주문 숫자 -->
+	<select id = "getProcessOrderCnt" resultType = "int">
+		select count(*) from memberorder where order_status = '결제완료'
+	</select>
+	
+	<!-- 오늘 주문 금액 -->
+	<select id = "getOrderAllPrice" resultType = "int" parameterType = "String">
+		select sum(order_price) from memberorder where order_date like #{order_date}||'%'
+	</select>
+	
+	<!-- 캘린더 목록 -->
+	<select id = "getCalendarList" resultMap = "CalendarResultMap">
+		select * from calendar	
+	</select>
+	
+	<!-- 캘린더 일정 추가 -->
+	<insert id = "addCalendar" parameterType = "java.util.HashMap">
+		insert into calendar values(#{title}, #{end}, #{start}, cal_seq.nextval)
+	</insert>
+</mapper>

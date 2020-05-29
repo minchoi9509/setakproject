@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.QnaMapper">
+
+	<resultMap type="com.spring.community.QnaVO" id="qnaMap">
+		<result property="qna_num" column="qna_num"/>
+		<result property="member_id" column="member_id"/>
+		<result property="qna_type" column="qna_type"/>
+		<result property="order_num" column="order_num"/>
+		<result property="qna_title" column="qna_title"/>
+		<result property="qna_content" column="qna_content"/>
+		<result property="qna_date" column="qna_date"/>
+		<result property="qna_file" column="qna_file"/>
+		<result property="qna_check" column="qna_check"/>
+		<result property="qna_scr" column="qna_scr"/>
+		<result property="qna_pass" column="qna_pass"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.community.ReplyVO" id="replyMap">
+		<result property="reply_seq" column="reply_seq"/>
+		<result property="qna_num" column="qna_num"/>
+		<result property="reply_date" column="reply_date"/>
+		<result property="reply_content" column="reply_content"/>
+		<result property="member_id" column="member_id"/>
+		<result property="reply_group" column="reply_group"/>
+		<result property="reply_depth" column="reply_depth"/>
+		<result property="reply_order" column="reply_order"/>
+	</resultMap>
+	
+	<resultMap type = "java.util.HashMap" id="hashmapVO">
+		<result property="rnum" column="rnum"/>
+		<result property="qna_num" column="qna_num"/>
+		<result property="member_id" column="member_id"/>
+		<result property="member_name" column="member_name"/>
+		<result property="qna_type" column="qna_type"/>
+		<result property="order_num" column="order_num"/>
+		<result property="qna_title" column="qna_title"/>
+		<result property="qna_content" column="qna_content"/>
+		<result property="qna_date" column="qna_date"/>
+		<result property="qna_file" column="qna_file"/>
+		<result property="qna_check" column="qna_check"/>
+		<result property="qna_scr" column="qna_scr"/>
+		<result property="qna_pass" column="qna_pass"/>
+		<result property="reply_cnt" column="reply_cnt"/>
+	</resultMap>
+	
+	<!-- QNA 게시판 관련 -->
+	<select id="getListCount" resultType="int">
+		select count(*) from qna
+	</select>
+	
+	<select id="getQnaList" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select * from (select rownum as rnum, s.* from (
+		select q.*, m.member_name FROM (select distinct(q.qna_num), q.member_id, q.qna_type,  q.order_num, q.qna_title, q.qna_content, q.qna_date,
+		q.qna_file, q.qna_check, q.qna_scr, q.qna_pass, (select count(*) from qna_reply where qna_num = q.qna_num) as reply_cnt 
+		from qna q, qna_reply qr order by qna_num) q, member m where q.member_id = m.member_id ORDER BY qna_num desc) s)
+		where rnum between ${startrow} and ${endrow}
+	</select>
+	
+	<select id="getOrderList" parameterType="String" resultType="long">
+		select order_num from memberorder where member_id=#{member_id}
+	</select>
+			
+	<insert id="insertQna" parameterType="com.spring.community.QnaVO">
+		insert into qna values (QNA_SEQ.NEXTVAL, #{member_id, jdbcType=VARCHAR}, #{qna_type, jdbcType=VARCHAR},
+		#{order_num}, #{qna_title, jdbcType=VARCHAR}, #{qna_content, jdbcType=VARCHAR}, trunc(sysdate), #{qna_file,jdbcType=VARCHAR}, 
+		#{qna_check,jdbcType=VARCHAR}, #{qna_scr,jdbcType=VARCHAR}, #{qna_pass,jdbcType=VARCHAR})		
+	</insert>	
+
+	<select id="getDetail" parameterType="com.spring.community.QnaVO" resultMap="hashmapVO">
+		select * from (select q.*, m.member_name FROM qna q,member m where q.member_id = m.member_id) where qna_num = #{qna_num}
+	</select>
+	
+	<update id="updateQna" parameterType="com.spring.community.QnaVO">
+		update qna set qna_type = #{qna_type}, qna_title=#{qna_title}, 		
+		qna_content = #{qna_content}, qna_file = #{qna_file, jdbcType=VARCHAR},	
+		qna_scr = #{qna_scr}, qna_pass = #{qna_pass} where qna_num = #{qna_num}
+	</update>
+
+	<delete id="deleteQna" parameterType="com.spring.community.QnaVO">
+		delete from qna where qna_num = #{qna_num}
+	</delete>	
+		
+	<!-- QNA 댓글 관련 -->
+	<select id = "getReplyList" parameterType="com.spring.community.QnaVO" resultMap="replyMap">
+		select * from qna_reply where qna_num = #{qna_num} order by reply_group, reply_order
+	</select>
+
+	<insert id="insertReply" parameterType="com.spring.community.ReplyVO">
+		insert into qna_reply values(REPLY_SEQ.NEXTVAL, #{qna_num}, sysdate,  #{reply_content}, #{member_id}, (select nvl(max(reply_group)+1,0) from qna_reply where qna_num = #{qna_num}), 0, 0, 0)		
+	</insert>
+
+	<update id="updateReply" parameterType="com.spring.community.ReplyVO">
+		update qna_reply set reply_content = #{reply_content}, reply_update = 1 where reply_seq = #{reply_seq}
+	</update>
+			
+	<update id="deleteReply" parameterType="com.spring.community.ReplyVO">
+		update qna_reply set reply_content = '[삭제 된 댓글입니다.]', reply_delete = 1 where reply_seq = #{reply_seq} and 
+		reply_order = (select max(reply_order) from qna_reply where reply_group = #{reply_group})	
+	</update>
+	
+	<insert id="insertReReply" parameterType="com.spring.community.ReplyVO">
+		insert into qna_reply values(REPLY_SEQ.NEXTVAL, #{qna_num}, sysdate, #{reply_content}, #{member_id}, 
+		#{reply_group}, (select max(reply_order) from qna_reply where reply_group = #{reply_group})+1 , 0, 0)
+	</insert>		
+	
+	<select id = "getReplyCount" parameterType="com.spring.community.ReplyVO" resultType="int">
+		select count(*) from qna_reply where qna_num = #{qna_num}
+	</select>	
+	
+	<!--  -->
+	
+	<select id="getMemberName" parameterType="com.spring.community.QnaVO" resultType="String">
+		select member_name from MEMBER where member_id = #{member_id}
+	</select>
+	
+	<select id="qnaPassChk" parameterType="int" resultType="String">
+		select qna_pass from qna where qna_num=#{qna_num}
+	</select> 
+	
+	<select id="ad_qnalist" parameterType="com.spring.community.QnaVO" resultMap="qnaMap">
+		select * from qna order by qna_num desc 		 
+	</select>
+	
+	<update id="ad_qnaModify" parameterType="com.spring.community.QnaVO">
+		update QNA set
+		qna_check=#{qna_check,jdbcType=VARCHAR}				
+		where qna_num=#{qna_num}
+	</update>
+
+	<!-- 기응 -->
+	
+	<select id="selectQnalist" parameterType="HashMap" resultMap="qnaMap">
+		<![CDATA[select * 
+ 				from (select rownum rnum, a.* from
+   					(select * from qna where member_id=#{member_id} order by qna_date desc) a)
+    					where rnum >=#{startrow} and rnum <=#{endrow} ]]>
+	</select>
+</mapper>

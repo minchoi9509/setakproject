@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.MypageMapper">
+	
+	<resultMap type="com.spring.setak.MendingVO" id="MypageResultMap">
+		<result column="repair_seq" property="repair_seq"/>
+		<result column="repair_cate" property="repair_cate"/>
+		<result column="repair_kind" property="repair_kind"/>
+		<result column="repair_var1" property="repair_var1"/>
+		<result column="repair_var2" property="repair_var2"/>
+		<result column="repair_var3" property="repair_var3"/>
+		<result column="repair_content" property="repair_content"/>
+		<result column="repair_code" property="repair_code"/>
+		<result column="repair_count" property="repair_count"/>
+		<result column="repair_price" property="repair_price"/>
+		<result column="repair_file" property="repair_file"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.order.OrderVO" id="OrderResultMap">
+		<result column="order_num" property="order_num"/>
+		<result column="member_id" property="member_id"/>
+		<result column="order_date" property="order_date"/>
+		<result column="order_phone" property="order_phone"/>
+		<result column="order_price" property="order_price"/>
+		<result column="order_payment" property="order_payment"/>
+		<result column="order_delicode" property="order_delicode"/>
+		<result column="order_cancel" property="order_cancel"/>
+		<result column="order_status" property="order_status"/>
+		<result column="order_pickup" property="order_pickup"/>
+		<result column="order_name" property="order_name"/>
+		<result column="order_address" property="order_address"/>
+		<result column="order_request" property="order_request"/>
+		<result column="order_zipcode" property="order_zipcode"/>
+		<result column="order_delete" property="order_delete"/>
+		<result column="order_muid" property="order_muid"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.setak.KeepVO" id="KeepResultMap">
+		<result column="keep_seq" property="keep_seq"/>
+		<result column="keep_cate" property="keep_cate"/>
+		<result column="keep_kind" property="keep_kind"/>
+		<result column="keep_count" property="keep_count"/>
+		<result column="keep_month" property="keep_month"/>
+		<result column="keep_box" property="keep_box"/>
+		<result column="keep_price" property="keep_price"/>
+		<result column="keep_start" property="keep_start"/>
+		<result column="keep_end" property="keep_end"/>
+		<result column="keep_wash" property="keep_wash"/>
+		<result column="keep_file" property="keep_file"/>
+	</resultMap>	
+	
+	<resultMap type="com.spring.setak.WashingVO" id="WashingResultMap">
+		<result column="wash_seq" property="wash_seq"/>
+		<result column="wash_cate" property="wash_cate"/>
+		<result column="wash_kind" property="wash_kind"/>
+		<result column="wash_method" property="wash_method"/>
+		<result column="wash_count" property="wash_count"/>
+		<result column="wash_price" property="wash_price"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.order.OrderListVO" id="OrderlistResultMap">
+		<result column="wash_seq" property="wash_seq"/>
+		<result column="repair_seq" property="repair_seq"/>
+		<result column="keep_seq" property="keep_seq"/>
+		<result column="order_num" property="order_num"/>
+	</resultMap>
+	
+	<resultMap type="java.util.HashMap" id="KeephashmapVO">
+		<result property="keep_seq" column="keep_seq"/>
+		<result property="keep_cate" column="keep_cate"/>
+		<result property="keep_kind" column="keep_kind"/>
+		<result property="keep_count" column="keep_count" />
+		<result property="keep_month" column="keep_month" />
+		<result property="keep_box" column="keep_box" />
+		<result property="keep_price" column="keep_price" />
+		<result property="keep_start" column="keep_start" />
+		<result property="keep_end" column="keep_end" />
+		<result property="keep_wash" column="keep_wash"/>
+		<result property="keep_file" column="keep_file"/>
+	</resultMap>
+	
+	<resultMap type="com.spring.member.MemberVO" id="MemberResultMap">
+		<result property="member_name" column="member_name" />
+		<result property="member_id" column="member_id" />
+		<result property="member_password" column="member_password" />
+		<result property="member_phone" column="member_phone" />
+		<result property="member_email" column="member_email" />
+		<result property="member_loc" column="member_loc" />
+		<result property="member_zipcode" column="member_zipcode" />
+	</resultMap>
+	
+	<resultMap type="com.spring.mypage.KeepPhotoVO" id="KeepPhoto">
+		<result property="order_num" column="order_num"/>
+		<result property="keep_photo" column="keep_photo"/>
+	</resultMap>
+	
+	
+	
+	<select id="getOrderlist" resultMap="OrderResultMap" parameterType="HashMap">
+			select *
+				from (select rownum rnum, a.*
+					from (select *
+				 	  from memberorder where member_id = #{member_id} order by order_num desc) a)
+  <![CDATA[ where rnum>=#{startrow} and rnum<=#{endrow} ]]> 
+	</select>
+
+	
+	<select id="getOrdernumlist" resultMap="OrderlistResultMap" parameterType="HashMap">
+		 select *
+from (select rownum rnum, a.*
+			from (select *
+				   from memberorder where member_id = #{member_id} order by order_num desc) a) <![CDATA[ where rnum>=#{startrow} and rnum<=#{endrow} ]]> 
+	</select>
+	
+	<select id="getOrdernumcount" resultType="int">
+		select count(distinct order_num) from orderlist where order_num in (select order_num from memberorder where member_id = #{member_id});
+	</select>
+		
+	<select id="selectMykeep" resultType="int" parameterType="long">
+		select count(*) from keep where keep_seq in (select keep_seq from orderlist where order_num = #{order_num}) and not keep_seq = 0
+	</select>
+	
+	<select id="selectMykeeplist" resultMap="KeepResultMap" parameterType="long">
+		select * from keep where keep_seq in (select keep_seq from orderlist where order_num = #{order_num}) and not keep_seq = 0
+	</select>
+	
+	<select id="getKeepSeq" resultMap="KeepResultMap" parameterType="int">
+			select * from keep
+				where keep_seq = #{keep_seq}
+	</select>
+	
+	<select id="getMember" parameterType="String" resultMap="MemberResultMap">
+			select * from member where member_id = #{member_id}
+	</select>
+	
+	
+	<update id="updateReview" parameterType="java.util.HashMap">
+		update memberorder set review_chk = #{review_chk} where order_num=#{order_num}
+	</update>
+	
+	<update id="updateKeepMonth" parameterType="java.util.HashMap" >
+		update keep set keep_end=TO_DATE(#{keep_end}, 'YY/MM/DD'), keep_now=#{keep_now} 
+		where keep_seq in (select keep_seq from orderlist where order_num = #{order_num})and not keep_seq = 0
+	</update>
+	
+	<update id="all_Return" parameterType="java.util.HashMap">
+		update Keep set keep_now = #{keep_now} where keep_seq in (select keep_seq from orderlist where order_num = #{order_num})and not keep_seq = 0 
+	</update>
+	
+	<update id="part_Return_now" parameterType="java.util.HashMap">
+		update Keep set Keep_now = #{keep_now} where keep_seq in (select keep_seq from orderlist where order_num = #{order_num})and not keep_seq = 0
+	</update>
+	
+	<select id="getKeepcount" resultType="int">
+		select count(*) from keep
+	</select>
+
+	<select id="selectOrder" resultMap="OrderResultMap" parameterType="long">
+		select * from memberorder where order_num = #{order_num}
+	</select>
+	
+	<select id="getOrdercount" resultType="int" parameterType="String">
+		select count(*) from memberorder where member_id = #{member_id}
+	</select>
+	
+	<select id="selectOrderId" parameterType="String" resultMap="OrderResultMap">
+		select * from memberorder where member_id = #{member_id} 
+	</select>	
+	
+	<select id="selectMending" resultMap="MypageResultMap" parameterType="long">
+		select * from repair where repair_seq in (select repair_seq from orderlist where order_num = #{order_num})
+	</select>
+	
+	<select id="selectKeep" resultMap="KeepResultMap" parameterType="long">
+		select * from keep where keep_seq in (select keep_seq from orderlist where order_num = #{order_num}) 
+	</select>
+	
+	<select id="selectWashing" resultMap="WashingResultMap" parameterType="long">
+		select * from washing where wash_seq in (select wash_seq from orderlist where order_num = #{order_num})
+	</select>
+	
+	<insert id="part_Return" parameterType="com.spring.mypage.KeepReturnVO">
+		insert into keep_return values (#{order_num}, #{return_kind}, #{return_content}, #{return_confirm})
+	</insert>
+	
+	<select id="selectPhoto" parameterType="long" resultMap="KeepPhoto">
+		select * from keep_photo where order_num = #{order_num}
+	</select>
+	
+	<select id="getQnaCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM QNA where member_id = #{member_id}
+			
+	</select>
+	
+</mapper>

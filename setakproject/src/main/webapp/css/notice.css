@@ -1,0 +1,296 @@
+@charset "UTF-8";
+
+.title-text {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+}
+.title-text h2 {
+	font-size: 2rem;
+	color: #444;
+}
+/*아래의 width로 파란 줄 길이 조절 가능*/
+.title-text h2:before {
+	content: '';
+	display: block;
+	width: 67.15%;
+	height: 6px;
+	background-color: #3498db;
+	margin-bottom: 6px;
+	vertical-align: middle;
+}
+
+small {
+	font-size: 0.9rem;
+	color: #aa9fa7;
+	font-weight: bold;
+	display: inline-block;
+	margin: 23px 10px 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link, a:visited {
+	color: #444;
+	text-decoration: none;
+}
+.notice {
+	font-size: 0.9rem;
+	padding-top: 150px;
+}
+.nlt1 {
+	color: #fff;
+	width: 1200px;
+	margin: auto;
+}
+.nlt1 tr {
+	margin: auto;
+	line-height: 40px; /* valign="middle" */
+	text-align:center;
+}
+.nlt1 tr td{
+	background-color: #3498db;
+	font-size:1rem;
+}
+.nlt2 {
+	margin: auto;
+	color: #444;
+	width: 1200px;
+	border-bottom: 1px solid #e1e4e4;
+}
+.nlt3{
+	margin-top:30px;
+	color: #444;
+	width: 1200px;
+}
+.nlt3 a{
+	cursor:pointer;
+	padding:5px 8px;
+	margin: 0 4px;
+}
+.nlt3 a:hover{
+	color:#3498db;
+}
+
+/*공지사항 view */
+.nvt1 {
+	color: #444;
+	height: 450px;
+	overflow:scroll;
+	width: 100%;
+	margin: auto;
+	border-top: 3px solid #3498db;
+	border-collapse: collapse;
+}
+.nvt1 tr:first-child {
+	border-bottom: 1px solid #e1e4e4;
+}
+.nvt1 tr td{
+	padding-left: 15px;
+}
+.nvt1 tr:last-child td{
+	padding:20px;
+}
+.nvt2 {
+	border-top: 3px solid #3498db;
+	width: 100%;
+	margin: auto;
+	padding-top: 20px;
+	color: #444;
+}
+.nvc {
+	line-height: 25px;
+	text-align: -webkit-match-parent;
+	vertical-align: baseline;
+}
+#nvc_pre{
+	width:100%;
+	white-space:pre-line;
+}
+button {
+	color: #fff;
+	background-color: #3498db;
+	WIDTH: 60px;
+	HEIGHT: 30px;
+	border-radius:5px;
+	border: none;
+	outline: none;
+	margin: 3px;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.active{
+	background-color:#3498db !important;
+	color:#fff;
+}
+
+
+/* 모바일 */
+@media screen and (max-width:768px) {
+	.title-text h2 {
+		font-size: 1.8rem;
+		color: #444;
+	}
+	/*아래의 width로 파란 줄 길이 조절 가능*/
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 67.15%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+
+	small {
+		font-size: 0.9rem;
+		color: #aa9fa7;
+		font-weight: bold;
+		display: inline-block;
+		margin: 23px 10px 0;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:link, a:visited {
+		color: #444;
+		text-decoration: none;
+	}
+	.notice {
+		font-size: 0.75rem;
+		padding-top: 80px;
+	}
+	.nlt1 {
+		color: #fff;
+		width: 100%;
+		margin: auto;
+	}
+	.nlt1 tr {
+		margin: auto;
+		line-height:30px;
+		text-align:center;
+	}
+	.nlt1 tr td{
+		background-color: #3498db;
+		font-size:1rem;
+	}
+	.nlt1 tr td:first-child{
+		width:15%;
+	}
+	.nlt1 tr td:nth-child(2){
+		width:60%;
+	}
+	.nlt1 tr td:last-child{
+		width:25%;
+	}	
+	.nlt2 {
+		margin: auto;
+		color: #444;
+		width: 100%;
+		border-bottom: 1px solid #e1e4e4;
+	}
+	.nlt2 tr td:first-child{
+		width:15%;
+	}
+	.nlt2 tr td:nth-child(2){
+		width:60%;
+	}
+	.nlt2 tr td:last-child{
+		width:25%;
+	}
+	.nlt2 tr td{
+		height:30px;
+	}
+	#no_title{
+	    height:30px;	
+	    overflow:hidden;
+    }
+    #no_title a{
+    	line-height:30px;
+    	margin-left:-16px;
+    }
+	.nlt3{
+		margin-top:30px;
+		color: #444;
+		width: 100%;
+	}
+	.nlt3 a{
+		cursor:pointer;
+	    padding:5px 8px;
+	    margin: 0 4px;
+	}
+	.nlt3 a:hover{
+		color:#3498db;
+	}
+
+	/*공지사항 view */
+	.nvt1 {
+		color: #444;
+		height: 450px;
+		overflow:scroll;
+		width: 100%;
+		margin: auto;
+		border-top: 3px solid #3498db;
+		border-collapse: collapse;
+	}
+	.nvt1 tr:first-child {
+		border-bottom: 1px solid #e1e4e4;
+	}
+	.nvt1 tr:first-child td{
+		padding-left: 15px;
+		width:70%;
+	}
+	.nvt1 tr:last-child td{
+		padding:20px;
+		width:30%;
+	}
+	.nvt2 {
+		border-top: 3px solid #3498db;
+		width: 100%;
+		margin: auto;
+		padding-top: 20px;
+		color: #444;
+	}
+	.nvc {
+		line-height: 25px;
+		text-align: -webkit-match-parent;
+		vertical-align: baseline;
+	}
+	#nvc_pre{
+		width:100%;
+		white-space:pre-line;
+		font-size:0.85rem;
+	}
+	button {
+		color: #fff;
+		background-color: #3498db;
+		WIDTH: 60px;
+		HEIGHT: 30px;
+		border-radius:5px;
+		border: none;
+		outline: none;
+		margin: 3px;
+		font-family: inherit;
+		cursor: pointer;
+	}
+}

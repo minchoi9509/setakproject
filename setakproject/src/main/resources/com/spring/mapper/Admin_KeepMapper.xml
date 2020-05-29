@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.Admin_KeepMapper">
+	
+	<resultMap type = "java.util.HashMap" id="hashmapVO">
+		<result property="keep_rnum" column="rnum" />
+		<result property="keep_seq" column="keep_seq" />
+		<result property="order_num" column="order_num" />
+		<result property="member_id" column="member_id" />
+		<result property="keep_cate" column="keep_cate" />
+		<result property="keep_kind" column="keep_kind" />
+		<result property="keep_count" column="keep_count" />
+		<result property="keep_box" column="keep_box" />
+		<result property="keep_start" column="keep_start" />
+		<result property="keep_end" column="keep_end" />
+		<result property="keep_now" column="keep_now" />
+		<result property="keep_path" column="keep_path" />
+	</resultMap>
+	
+	<select id="getKeepList" resultMap="hashmapVO">
+		select rownum rnum, keep_seq, member_id, order_num, keep_cate, keep_kind, keep_count, keep_box, keep_start, keep_end, keep_now
+		from (select rownum rnum, b.keep_seq, b.order_num, a.member_id, c.keep_cate, c.keep_kind, c.keep_count, c.keep_box, TO_CHAR(c.keep_start, 'YYYY-MM-DD') as keep_start,  TO_CHAR(c.keep_end, 'YYYY-MM-DD') as keep_end, c.keep_now
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join keep c
+		        on b.keep_seq = c.keep_seq
+		        where b.keep_seq > 0
+		        order by c.keep_seq desc)
+	</select>
+	
+	<update id="updateKeep" parameterType="com.spring.setak.KeepVO">
+		update keep set keep_cate = #{keep_cate}, keep_kind = #{keep_kind}, keep_count = #{keep_count}, keep_box = #{keep_box}, keep_start = #{keep_start}, keep_end = #{keep_end}, keep_now = #{keep_now} where keep_seq=#{keep_seq}
+	</update>
+	
+	<insert id="keepImg" parameterType="java.util.HashMap">
+		 insert into keep_photo(order_num, keep_path) values(#{order_num}, #{keep_path})
+	</insert>
+		
+	<delete id="deleteImg" parameterType="string">
+		delete from keep_photo where keep_path = #{keep_path}
+	</delete>
+	
+	<select id="loadImg" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select keep_path from keep_photo where order_num = #{order_num}	
+	</select>
+	
+	<delete id="deleteKeep" parameterType="int">
+		delete from keep where keep_seq = #{keep_seq}
+	</delete>
+	
+	<select id="keepSerach" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select rownum rnum, keep_seq, member_id, order_num, keep_cate, keep_kind, keep_count, keep_box, keep_start, keep_end, keep_now
+		from (select rownum rnum, b.keep_seq, b.order_num, a.member_id, c.keep_cate, c.keep_kind, c.keep_count, c.keep_box, TO_CHAR(c.keep_start, 'YYYY-MM-DD') as keep_start,  TO_CHAR(c.keep_end, 'YYYY-MM-DD') as keep_end, c.keep_now 
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join keep c
+		        on b.keep_seq = c.keep_seq
+		        where b.keep_seq > 0
+			<if test = "keyword != null">
+				and (a.member_id like '%'||#{keyword, jdbcType=VARCHAR}||'%')
+			</if>
+			order by c.keep_seq desc)
+	</select>
+	
+</mapper>

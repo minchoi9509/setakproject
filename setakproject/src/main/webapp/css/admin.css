@@ -1,0 +1,89 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+	html, body, header, footer, section, nav, div, h1, h2, h3, h4, a, i, ul, li, p, span, img{
+		margin:0;
+		padding:0;
+	}
+	html, body{
+		height:100%;
+	}
+	body{
+		font-family:"Nanum Gothic", "Noto Sans";
+	}
+	a{
+		color:#fff;
+		text-decoration:none;
+	}
+	ul{
+		list-style:none;
+		display:inline-block;
+	}
+	ul li{
+		display:inline-block;
+	}
+	nav{
+		position:fixed;
+		height:100%;
+	}
+
+	.admin-nav{
+		width:200px;
+        background:#ffac15;
+        height:100%;
+	}
+	
+	.admin-nav>a{
+		font-size :1.3rem;
+		font-weight : bold;
+		color:#fff;
+        display : block;
+        text-align : center;
+        padding : 30px 0px;
+	}    
+	
+	.admin-nav li{
+	    display:block;
+	    color:#fff;
+        padding : 15px 25px;
+	}
+
+	.admin-nav li:first-child {
+		margin-top : 5px;
+	}
+
+	.align-right {
+		float : right; 	
+		font-weight : bold; 
+	}
+	
+	.admin-nav li a{
+		font-weight:bold;
+		font-size:1.1rem;
+	}
+	
+	.admin-side-nav li {
+		padding : 8px 15px;		
+	}
+
+	.admin-side-nav li a {
+		font-size: 0.98rem;
+	}
+	
+	
+	.nav-color1 {
+		background-color : #ffac15;
+	}
+	.nav-color2 {
+		background-color : #fbcc7761;
+	}
+
+	.content{
+		margin-left:240px;
+		margin-right:40px;
+	}
+	.content > h1{
+		padding:40px 0;
+		color:#444;
+	}

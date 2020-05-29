@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.MileageMapper">
+
+	<resultMap type="com.spring.member.MileageVO" id="MileageResultMap">
+		<result property="member_id" column="member_id" />
+		<result property="mile_date" column="mile_date" />
+		<result property="mile_price" column="mile_price" />
+		<result property="mile_content" column="mile_content" />
+	</resultMap>
+	
+	<!-- 적립금 합계 -->
+	<select id = "getSum" parameterType = "String" resultType = "int">
+		select sum(mile_price) from mileage where member_id = #{member_id}
+	</select>	
+	
+	<insert id = "useMileage" parameterType = "com.spring.member.MileageVO">
+		insert into mileage values (#{member_id}, #{mile_date}, #{mile_price}, #{mile_content}, mile_seq.nextval)
+	</insert>
+	
+	
+	<!-- 기응 -->
+	<select id="totSum" parameterType="String" resultType="int">
+		select sum(decode(sign(mile_price), 1, sum(mile_price))) from mileage where member_id = #{member_id} group by mile_price
+	</select>
+
+	<select id="useSum" parameterType="String" resultType="int">
+		select sum(decode(sign(mile_price), -1, sum(mile_price))) from mileage where member_id = #{member_id} group by mile_price
+	</select>
+	
+	<select id="getMileagelist" parameterType="HashMap" resultMap="MileageResultMap">
+		<![CDATA[select * from (select rownum rnum, member_id, mile_date, mile_price, mile_content from 
+					(select * from mileage where member_id = #{member_id} order by mile_date desc))	where rnum>= #{startrow} and rnum<= #{endrow} ]]>
+	</select>
+	
+	<select id="getListCount" resultType="int" parameterType="String">
+		select count(*) from mileage where member_id = #{member_id}
+	</select>
+	<!-- 
+	<select id="getMileagelist" resultMap="MileageResultMap" parameterType="String">
+		select * from mileage where member_id = #{member_id}
+	</select>
+	 -->	
+</mapper>

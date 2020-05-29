@@ -1,0 +1,1092 @@
+@charset "UTF-8";
+
+.swal2-container {
+  z-index: 11;
+}
+
+.title-text {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+}
+
+.title-text h2 {
+	font-size: 2rem;
+	color: #444;
+}
+
+/*아래의 width로 파란 줄 길이 조절 가능*/
+.title-text h2:before {
+	content: '';
+	display: block;
+	width: 53%;
+	height: 6px;
+	background-color: #3498db;
+	margin-bottom: 6px;
+	vertical-align: middle;
+}
+
+/*이미지*/
+.arrow-img {
+	width : 100%;
+	margin-bottom:60px;
+}
+
+/* div-1000 */
+.div-1000 {
+	width : 100%; 
+	margin : 0 auto; 
+	text-align : center; 
+	padding-top:150px;
+}
+
+.notice {
+	color: #3498db;
+	font-size: 0.9rem;
+	text-align: left;
+	margin-bottom: 50px;
+	margin-left: 0px;
+	font-weight:bold;
+}
+
+/*공통*/
+.txtBlue {
+	color : #3498db;
+}
+
+/*주문리스트 테이블 : order_list_table */
+.order-div {
+	margin-bottom : 70px; 
+}
+
+.order-div h3,
+.delivery_info_table thead tr th h3,
+.pay_title h3,
+.price-div h3 {
+	float: left;
+	margin-bottom: 10px;
+	font-size : 1.25rem; 
+}
+
+.order_list_table,
+.delivery_info_table {
+	width : 1200px; 
+	margin-top: 10px;
+	border-spacing: 0;
+}
+
+.order_list_table thead tr th
+{
+	border-top: 2px solid #3498db;
+	border-bottom: 2px solid #D8D8D8;
+	height: 33px;
+}
+
+.order_list_table tbody tr td {
+	border-bottom: 1px solid #E6E6E6;
+	height : 50px; 
+}
+
+label#saveAddrLabel {
+    font-size: 0.85rem;
+    margin-left: 30px;
+}
+
+/*배송지 테이블 */
+.delivery-div {
+	margin-bottom : 70px; 
+}
+
+.delivery_info_table thead tr th 
+{
+	border-bottom: 2px solid #3498db;
+}
+
+.delivery_info_table thead tr th,
+.delivery_info_table tbody {
+	text-align: left;
+}
+
+.delivery_info_table tbody tr td{
+	height : 50px; 
+	border-bottom: 1px solid #E6E6E6;
+}
+
+.left_col {
+	width : 200px;
+	text-align : center; 
+	background-color :  #eeefef;
+	font-size : 0.92rem;
+	font-weight : bold; 
+}
+
+.right_col {
+	padding-left : 15px; 
+}
+
+.txtInp {
+	border : 1px solid #bbb;
+	color : #444;
+	padding : 0 5px; 
+	font-size : 0.8rem; 
+	height : 25px; 
+	margin-top : 10px; 
+	margin-bottom : 10px; 
+}
+
+#postcode.txtInp {
+	width : 50px;
+}
+
+#address.txtInp {
+	width : 220px; 
+}
+
+#detailAddress.txtInp {
+	width : 305px;
+}
+
+#request.txtInp {
+	width : 550px;
+}
+
+
+
+/*결제 테이블*/
+.pay-div {
+	margin-bottom : 70px; 
+	height : 300px; 
+}
+
+.pay_title {
+	height : 24px; 
+}
+
+.discount-div {
+	width: 60%;
+	float: left;
+}
+
+.discount_table {
+	width : 90%; 
+	float: left; 
+	border-spacing: 0;
+}
+
+.discount_table .right_col {
+	text-align : left; 
+}
+
+.first_row {
+	border-top : 2px solid #3498db;
+}
+.first_row.right_col input{
+	background-color:#3498db;
+	color:#fff;
+	border:0;
+	padding:6px 9px;
+	cursor:pointer;
+}
+.discount_table tbody tr td,
+.price_table tbody tr td {
+	height : 50px; 
+	border-bottom: 1px solid #E6E6E6;
+}
+
+.myPoint {
+	display: inline; 
+	font-size : 0.7rem;
+	color : #848484;
+}
+
+
+.price_table {
+	width : 40%; 
+	float : right; 
+	border-spacing: 0;
+}
+
+.price_table tbody tr td {
+	font-weight : bold; 
+}
+
+input#final_price,
+input#point_price {
+	font-weight: bold;
+	color: #3498db;
+	border: 0;
+	font-size: 1.3rem;
+	text-align: center;
+}
+
+.pay_btnDiv {
+    height: 100px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+
+.pay_btn {
+		width : 100%; 
+		height : 40px; 
+ 		background-color : #3498db;
+ 		color : #fff;
+ 		text-align : center;
+ 		text-decoration : none;
+ 		padding : 6px 0 7px;
+ 		font-size : 1.2rem;  
+ 		border : none; 
+ 		cursor : pointer; 
+ 		margin-top:20px;
+}
+.pay_btn:hover{
+	background-color:#fff;
+	color:#3498db;
+	border:1px solid #3498db;
+	font-weight:bold;
+	transition:all .4s;
+}
+
+/*팝업 레이어 공통*/
+.layer-card {
+	display : none; 
+	z-index : 10;
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	background-color : rgba(0, 0, 0, 0.5);
+}
+
+#popup-div {
+	display : none;
+	position : fixed;
+	width : 60%;
+	height : 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	background-color : #ffffff; 
+	padding : 30px; 
+}
+
+#popup-div2 {
+	display : none;
+	position : fixed;
+	width : 60%;
+	height : 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	background-color : #ffffff; 
+	padding : 30px; 
+	overflow : scroll; 
+
+}
+
+/*나의 배송주소록 레이어*/
+.addr-btn {
+	float : right; 
+	margin-right : 20px; 
+}
+
+.addr-notice {
+	padding : 20px; 
+}
+
+.addr-notice p {
+	color: #3498db;
+	font-size: 0.9rem;
+	margin-bottom : 3px; 
+}
+
+
+.btnBlue {
+	float : right; 
+	background-color: #3498db;
+    color: #ffffff;
+	text-align: center;
+	box-shadow : none;
+	border : 1px solid; 
+	height : 30px;
+	width : 80px;
+	font-size : 0.75rem;
+	cursor : pointer;
+	transition:all .3s;
+}
+
+.btnBlue:hover {
+	background-color:#fff;
+	color:#3498db;
+	border:1px soild #3498db;
+	font-weight:bold;
+}
+
+
+.modiCloseBtn {
+    width: 65px;
+    float: right;
+    background-color: #F7F7F6;
+    border: 0;
+    font-size: 1.5rem;
+    margin-top: 30p;
+    height: 65px;
+}
+
+.modi-form-div {
+    margin-top: 50px;
+}
+
+#new-addr-div {
+	margin-top: 30px;
+	display : none;
+    background-color : #eeefef;
+    padding : 20px;
+    margin-bottom : 15px; 
+}
+
+.new-addr-table {
+	margin-top : 20px; 
+	margin : auto;
+	text-align : left; 
+}
+
+.new-addr-table tr {
+	height : 30px; 
+}
+
+.new-addr-table tr td .txtInp {
+	margin-top : 0;
+	margin-bottom : 3px; 
+}
+
+.new-left {
+    color: #444;
+    font-size: 0.9rem;
+    text-align: center;
+	font-weight: bold;
+	width: 20%;
+}
+
+
+#new-addr-close {
+	float : right;
+	position : relative;
+	top :0;
+	right :0;
+	border : 0px;
+	font-size : 1.1rem;
+}
+
+.addr-content {
+	margin-top : 50px; 
+}
+
+.addr-table {
+    text-align: center;
+    width: 100%;
+    font-size: 0.8rem;
+    color: #444;
+    border-spacing : 0; 
+    margin-bottom : 30px; 
+}
+
+.addr-table thead th {
+	height : 35px;
+	border-top : 2px solid #D8D8D8;
+	border-bottom : 1px solid #D8D8D8;
+	background-color : #eeefef;
+}
+
+.addr-table tbody tr td {
+	height : 60px; 
+	border-bottom : 1px solid #d8d8d8;
+}
+
+
+#modiDiv {
+	background-color: #f7f7f7;
+	padding: 20px;
+	color: #4a5666;
+	display: none;
+}
+
+#modiDiv td h3 {
+	float : left;
+	padding-top : 30px;
+	padding-left : 100px; 
+}
+
+.addr-choice:hover {
+	text-decoration : underline;
+	cursor : pointer;
+}
+
+
+/*쿠폰 팝업 레이어*/
+.popup-title {
+	border-bottom : 2px solid #eeefef; 
+	padding-bottom: 20px; 
+}
+
+.popup-content1 {
+    float: left;
+    width: 50%;
+    border: 1.5px solid #D8D8D8;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.popup-content1 h3 {
+	margin-bottom : 20px;
+}
+.popup-content1 ul li {
+
+	display: block;
+	padding-bottom: 5px;
+}
+
+.popup-content2 {
+	position: absolute;
+	display: inline-block;
+	width: 40%;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+#coupon-btn {
+	width: 100%;
+    background-color: #3498db;
+    color: #ffffff;
+    text-align: center;
+    height: 50px;
+    font-size: 1.2rem;
+    box-shadow: none;
+    border: 0;
+    padding: 12px 0;
+    cursor:pointer;
+}
+
+.popup-table-div {
+	border: 1.5px solid #D8D8D8;
+	padding: 20px;
+	margin-bottom : 10px; 
+}
+
+.popup-table {
+	width : 100%; 
+}
+
+.popup-table tr td hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border : 1px solid #eeefef; 
+}
+
+.pLeft_col {
+	text-align : left;
+	height : 30px; 
+}
+
+.pRight_col {
+	text-align : right;
+}
+
+.pFinal {
+	font-weight : bold; 
+	font-size : 1.2rem;
+}
+
+.popup-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 65px;
+	height: 65px;
+	border: white;
+	background-color: white;
+	padding-top: 15px;
+	padding-right: 15px;
+	font-weight: bold;
+	font-size:1.5rem;
+	cursor:pointer;
+}
+
+.popup-close:active {
+	border : 0px; 
+}
+
+.repairCode {
+    font-size: 0.8rem;
+    color: #929292;
+}
+	
+
+/* 모바일 */
+@media screen and (max-width:768px) {		
+	.title-text {
+		position: absolute;
+		right: 0;
+		left: 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+		-moz-box-pack: center;
+		-moz-box-align: center;
+		-ms-box-pack: center;
+		-ms-box-align: center;
+	}
+	
+	.title-text h2 {
+		font-size: 1.8rem;
+		color: #444;
+	}
+	
+	/*아래의 width로 파란 줄 길이 조절 가능*/
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 40%;
+		height: 6px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+	
+	/*이미지*/
+	.arrow-img {
+		width : 100%;
+		margin-bottom:10px;
+	}
+	
+	/* div-1000 */
+	.div-1000 {
+		width : 100%; 
+    	margin : 0 auto; 
+	    text-align : center; 
+    	padding-top:80px;
+	}
+	
+	.notice {
+		color: #3498db;
+		font-size: 0.8rem;
+		text-align: left;
+		margin-bottom:15px;
+	}
+	
+	/*공통*/
+	.txtBlue {
+		color : #3498db;
+	}
+	
+	/*주문리스트 테이블 : order_list_table */
+	.order-div {
+		margin-bottom : 30px; 
+		font-size : 0.8rem;
+	}
+	
+	.order-div h3,
+	.delivery_info_table thead tr th h3,
+	.pay_title h3,
+	.price-div h3 {
+		padding-top: 10px;
+		float: left;
+		margin-bottom: 10px;
+		font-size : 1.1rem;
+	}
+	
+	.order_list_table,
+	.delivery_info_table {
+		width : 100%; 
+		margin-top: 10px;
+		border-spacing: 0;
+	}
+	
+	.order_list_table thead tr th
+	{
+		border-top: 2px solid #3498db;
+		border-bottom: 2px solid #D8D8D8;
+		height: 33px;
+	}
+	
+	.order_list_table tbody tr td {
+		border-bottom: 1px solid #E6E6E6;
+		height : 50px; 
+	}
+	
+	label#saveAddrLabel {
+	    font-size: 0.7rem;
+	    margin-left: 0px;
+	}
+	
+	/*배송지 테이블 */
+	.delivery-div {
+		margin-bottom : 30px; 
+	}
+	
+	.delivery_info_table thead tr th 
+	{
+		border-bottom: 2px solid #3498db;
+	}
+	
+	.delivery_info_table thead tr th,
+	.delivery_info_table tbody {
+		text-align: left;
+	}
+	
+	.delivery_info_table tbody tr td{
+		height : 50px; 
+		border-bottom: 1px solid #E6E6E6;
+	}
+	
+	.left_col {
+		width : 90px;
+		text-align : center; 
+		background-color :  #eeefef;
+		font-size : 0.8rem;
+		font-weight : bold; 
+	}
+	
+	.right_col {
+		font-size : 0.8rem;
+	}
+	
+	
+	
+	.txtInp {
+		border : 1px solid #bbb;
+		color : #444;
+		padding : 0 5px; 
+		font-size : 0.7rem; 
+		height : 25px; 
+		margin-top : 10px; 
+		margin-bottom : 10px; 
+	}
+
+	#postcode.txtInp {
+	    width : 50px;
+	}
+
+	#address.txtInp {
+		display : block;
+		width : 70%; 
+	}
+
+	#detailAddress.txtInp {
+		width : 90%;
+	}
+
+	#request.txtInp {
+		width : 90%;
+}
+
+	
+	/*결제 테이블*/
+	.pay-div {
+		margin-bottom : 200px; 
+		height : 300px; 
+	    font-size : 0.8rem
+	}
+	
+	
+	.pay_title {
+		height: 18px;
+	}
+	
+	.discount-div {
+		width: 100%;
+		clear : both;
+	}
+	
+	.discount_table {
+		width : 100%; 
+		clear : both;
+		border-spacing: 0;
+	}
+	
+	.discount_table .right_col {
+		text-align : left; 
+	}
+	
+	.first_row {
+		border-top : 2px solid #3498db;
+	}
+	.first_row.right_col input{
+	background-color:#3498db;
+	color:#fff;
+	border:0;
+	padding:6px 9px;
+	cursor:pointer;
+    }
+	.discount_table tbody tr td,
+	.price_table tbody tr td {
+		height : 50px; 
+		border-bottom: 1px solid #E6E6E6;
+	}
+	
+	.myPoint {
+		display: inline; 
+		font-size : 0.6rem;
+		color : #848484;
+	}
+	
+	
+	.price_table {
+		width : 100%; 
+		clear : both;
+		border-spacing: 0;
+	}
+	
+	.price_table tbody tr td {
+		font-weight : bold; 
+	}
+	
+	input#final_price,
+	input#point_price {
+		font-weight: bold;
+		color: #3498db;
+		border: 0;
+		font-size: 1.3rem;
+		text-align: center;
+	}
+	
+	.pay_btnDiv {
+	    height: 100px;
+	    margin-top: 60px;
+	    margin-bottom: 50px;
+	}
+	
+.pay_btn {
+		width : 100%; 
+		height : 40px; 
+ 		background-color : #3498db;
+ 		color : #fff;
+ 		text-align : center;
+ 		text-decoration : none;
+ 		padding : 6px 0 7px;
+ 		font-size : 1rem;  
+ 		border : none; 
+ 		cursor : pointer; 
+ 		margin-top:0px;
+}
+
+	
+	/*팝업 레이어 공통*/
+	.layer-card {
+		display : none; 
+		z-index : 10000;
+		position : absolute;
+		top : 0;
+		left : 0;
+		width : 100%;
+		background-color : rgba(0, 0, 0, 0.5);
+	}
+	
+	#popup-div {
+		display : none;
+		position : fixed;
+		width : 60%;
+		height : 400px;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+		background-color : #ffffff; 
+		padding : 0px; 
+		clear : both;
+		overflow : scroll; 
+	}
+	
+	#popup-div2 {
+		display : none;
+		position : fixed;
+		width : 90%;
+		height : 80%;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+		background-color : #ffffff; 
+		padding : 15px; 
+		overflow : scroll; 
+	
+	}
+	
+	/*나의 배송주소록 레이어*/
+	.addr-btn {
+		float : right; 
+		margin-right : 0px; 
+	}
+	
+	.addr-notice {
+		padding : 10px; 
+	}
+	
+	.addr-notice p {
+		color: #3498db;
+		font-size: 0.785rem;
+		margin-bottom : 3px; 
+	}
+	
+	
+	.btnBlue {
+		float : right; 
+		background-color: #3498db;
+	    color: #ffffff;
+		text-align: center;
+		box-shadow : none;
+		border : 0; 
+		height : 25px;
+		width : 70px;
+		font-size : 0.5rem;
+		cursor : pointer; 
+	}
+	
+	.btnBlue:hover {
+		opacity : 0.8; 
+	}
+	
+	.modiCloseBtn {
+	    width: 65px;
+	    float: right;
+	    background-color: #F7F7F6;
+	    border: 0;
+	    font-size: 1.5rem;
+	    margin-top: 30p;
+	    height: 65px;
+	}
+	
+	.modi-form-div {
+	    margin-top: 50px;
+	}
+	
+	#new-addr-div {
+		margin-top: 30px;
+		display : none;
+	    background-color : #eeefef;
+	    padding : 20px;
+	    margin-bottom : 15px; 
+	}
+	
+	.new-addr-table {
+		margin-top : 20px; 
+		margin : auto;
+		text-align : left; 
+	}
+	
+	.new-addr-table tr {
+		height : 30px; 
+	}
+	
+	.new-addr-table tr td .txtInp {
+		margin-top : 0;
+		margin-bottom : 3px; 
+	}
+	
+	.new-left {
+	    color: #444;
+	    font-size: 0.6rem;
+	    text-align: center;
+		font-weight: bold;
+		width: 20%;
+	}
+	
+	
+	#new-addr-close {
+		float : right;
+		position : relative;
+		top :0;
+		right :0;
+		border : 0px;
+		font-size : 1.1rem;
+		background-color : #EEEFEF;
+	}
+	
+	.addr-content {
+		margin-top : 50px; 
+	}
+	
+	.addr-table {
+	    text-align: center;
+	    width: 100%;
+	    font-size: 0.8rem;
+	    color: #444;
+	    border-spacing : 0; 
+	    margin-bottom : 30px; 
+	}
+	
+	.addr-table thead th {
+		height : 35px;
+		border-top : 2px solid #D8D8D8;
+		border-bottom : 1px solid #D8D8D8;
+		background-color : #eeefef;
+		font-size:0.8rem;
+	}
+
+	.addr-table thead th:nth-child(1),
+	.addr-table thead th:nth-child(2) {
+		width : 40px;
+	}
+	
+	.addr-table tbody tr td {
+		height : 60px; 
+		border-bottom : 1px solid #d8d8d8;
+	}
+
+	.modiAddrBtn {
+		margin-bottom : 3px;
+		background-color : #d8d8d8;
+		border : 0;
+		box-shadow : 0;
+		padding : 4px 7px; 
+
+	}
+
+	.delAddrBtn {
+		margin-bottom : 3px;
+		background-color : #d8d8d8;
+		border : 0;
+		box-shadow : 0;
+		padding : 4px 7px; 
+	}
+
+	#modiDiv {
+		background-color: #f7f7f7;
+		padding: 20px;
+		color: #4a5666;
+		display: none;
+	}
+	
+	#modiDiv td h3 {
+		float : left;
+		padding-top : 30px;
+		padding-left : 100px; 
+	}
+	
+	.addr-choice:hover {
+		text-decoration : underline;
+		cursor : pointer;
+	}
+	
+	
+	/*쿠폰 팝업 레이어*/
+	#popup-div {
+		width : 95%;
+		height : 80%;
+	}
+	.popup-title {
+		border-bottom : 0px solid #eeefef; 
+		padding :10px; 
+	}
+	
+	.popup-content1 {
+	    clear : both;
+	    width: 100%;
+	    border: 0px solid #D8D8D8;
+	    border-bottom : 1px solid #D8D8D8;
+	    margin-top: 30px;
+	    padding: 0px;
+	    padding-bottom : 10px; 
+	}
+	
+	.popup-content1 h3 {
+		padding-left : 10px;
+		margin-bottom : 20px;
+	}
+	.popup-content1 ul li {
+	
+		display: block;
+		padding-left : 10px;
+		padding-bottom: 5px;
+	}
+	
+	.popup-content2 {
+		width: 100%;
+		display : contents;
+	}
+	
+	#coupon-btn {
+		width: 100%;
+	    background-color: #3498db;
+	    color: #ffffff;
+	    text-align: center;
+	    height: 50px;
+	    font-size: 1.2rem;
+	    box-shadow: none;
+	    border: 0;
+	    margin-top :90px; 
+	    padding: 12px 0;
+	}
+	
+	.popup-table-div {
+		padding: 20px;
+		margin-bottom : 10px; 
+		border-bottom : 0px; 
+	}
+	
+	.popup-table {
+		width : 100%; 
+	}
+	
+	.popup-table tr td hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border : 0px solid #eeefef; 
+	}
+	
+	.pLeft_col {
+		text-align : left;
+		height : 30px; 
+	}
+	
+	.pRight_col {
+		text-align : right;
+	}
+	
+	.pFinal {
+		font-weight : bold; 
+		font-size : 1.2rem;
+	}
+	
+	.popup-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 65px;
+		height: 65px;
+		border: white;
+		background-color: white;
+		padding-top: 15px;
+		padding-right: 15px;
+		font-weight: bold;
+	}
+	
+	.popup-close:active {
+		border : 0px; 
+	}
+	
+	.repairCode {
+	    font-size: 0.8rem;
+	    color: #929292;
+	}
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.mapper.Admin_subscribe">
+	
+	<resultMap type = "java.util.HashMap" id="hashmapVO">
+		<result property="member_id" column="member_id" />
+		<result property="washcnt" column="washcnt" />
+		<result property="shirtscnt" column="shirtscnt" />
+		<result property="drycnt" column="drycnt" />
+		<result property="blacketcnt" column="blacketcnt" />
+		<result property="deliverycnt" column="deliverycnt" />
+		<result property="subs_start" column="subs_start" />
+		<result property="subs_end" column="subs_end" />
+		<result property="subsname" column="subsname" />
+		<result property="subs_water" column="subs_water" />
+		<result property="subs_shirts" column="subs_shirts" />
+		<result property="subs_dry" column="subs_dry" />
+		<result property="subs_blanket" column="subs_blanket" />
+		<result property="subs_delivery" column="subs_delivery" />
+	</resultMap>
+
+	<!-- 정기구독 회원 리스트 -->
+	<select id="getMemberSubList" resultMap="hashmapVO">
+		select * from subs_view order by subs_start desc
+	</select>
+	
+	<!-- 정기구독 검색   -->
+	<select id = "subMemberSearch" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select *
+		from subs_view
+		<trim prefix="WHERE" prefixOverrides="and|or">
+			<if test = 'keyword != null'>
+			and (member_id like '%'||#{keyword, jdbcType=VARCHAR }||'%')
+			</if>		
+			<if test = 'planArr != null'>
+				and (
+				<foreach collection='planArr' index='index' item='item' open='(' close=')' separator='or'>
+					subsname like #{item}||'%'		
+				</foreach>
+				)
+			</if>
+		</trim>
+		<if test = "orderBy.equals('byDate')">
+			order by subs_start desc
+		</if>
+		<if test = "orderBy.equals('byDateReverse')">
+			order by subs_start
+		</if>
+	</select>
+	
+	<!-- 정기구독 관리자 페이지 수정 -->
+	<update id="updateMemberSubList" parameterType = "com.spring.member.MemberSubVO">
+		update member_subs set washcnt = #{washcnt}, shirtscnt = #{shirtscnt}, drycnt = #{drycnt},
+		blacketcnt = #{blacketcnt}, deliverycnt = #{deliverycnt} where member_id = #{member_id}
+	</update>
+	
+	<!-- 정기구독 관리자 페이지 삭제  : member_subs 테이블에서 삭제-->
+	<delete id = "deleteMemberSubList" parameterType = "String">
+		delete from member_subs where member_id = #{member_id} 
+	</delete>	
+	
+	<!-- 정기구독 관리자 페이지 삭제 : member 테이블에서 컬럼 값 변경 -->
+	<update id="updateSubNum" parameterType = "java.util.HashMap">
+		update member set subs_num = #{subs_num, jdbcType = INTEGER} where member_id = #{member_id}
+	</update>
+	
+	<!-- 정기구독 차트 > 전체 유형 비율 -->
+	<select id="getMemberSubCnt" resultType = "int" parameterType = "String">
+		select count(*) from member_subs where subsname like #{subsname}||'%'
+	</select>
+	
+	<select id = "getMemberSubCnt2" resultType = "int" parameterType = "String">
+		select count(*) from member_subs where subsname = #{subsname} 
+	</select>
+	
+	<!-- 정기구독 차트 > 일별 정기구독 신청 수 + 유형 비율 -->
+ 	<select id="getMemberDailySubCnt" resultType = "int" parameterType = "java.util.HashMap">
+ 		select count(*) from member_subs where subsname like #{subsname}||'%' and subs_start = #{subs_start}
+	</select>
+	
+	<!-- 정기구독 인기 TOP 3 -->
+	<select id = "getSubPopular" resultType = "java.util.HashMap">
+		<![CDATA[select subsname, subscnt, subrank from (select rownum rnum, subsname, subscnt, subrank from 
+		(select subsname, subscnt, DENSE_rank() OVER (ORDER BY subscnt DESC) as subrank from (select subsname, count(*) as subscnt from 
+		(select subsname from member_subs) group by subsname))) where rnum <= 5]]>	
+	</select>
+	
+</mapper>

@@ -1,0 +1,1005 @@
+@charset "UTF-8";
+
+
+.swal2-container {
+  z-index: 100;
+}
+
+#title {
+   height: 140px;
+}
+.title-text {
+   position: absolute;
+   right: 0;
+   left: 0;
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   -webkit-align-items: center;
+   -webkit-justify-content: center;
+   -webkit-box-pack: center;
+   -webkit-box-align: center;
+   -moz-box-pack: center;
+   -moz-box-align: center;
+   -ms-box-pack: center;
+   -ms-box-align: center;
+}
+
+.title-text h2 {
+   font-size: 2rem;
+   color: #444;
+}
+/*아래의 width로 파란 줄 길이 조절 가능*/
+.title-text h2:before {
+   content: '';
+   display: block;
+   width: 40%;
+   height: 6px;
+   background-color: #3498db;
+   margin-bottom: 6px;
+   vertical-align: middle;
+}
+/*
+   default.css에 body와 a랑 뭐 기타등등 속성들 기본값 저장해놨으니 한번확인해주세요
+   content를 미리 해놨기때문에 자동으로 1200px안에 중앙정렬돼서 출력될겁니다. 참고 >_-(찡긋)
+   폰트사이즈는 무조건 rem으로 작업해주세요.
+   */
+
+/*변경된 클래스와 아이디로 작업하세요*/
+/*로그인*/
+#test .content{
+   margin:0 auto;
+}
+
+.loginform{
+    width:400px;
+    margin: -50px auto;
+    text-align:center;   
+}
+
+.loginform div input {
+   width:100%;
+}
+
+.loginform .txtln {
+   height:40px;
+   margin-top:20px;
+   padding-left:10px;
+   border:1.4px solid #9E9E9E;
+   box-sizing:border-box;
+}
+
+.login .btn {
+   margin-top:20px;
+   background-color: #3498db;
+   border:2px solid #3498db;
+   color:#fff;
+   line-height: 45px;
+   border-radius: 6px;
+   font-size:1rem;
+   cursor:pointer;
+   font-weight:bold;
+   text-align:center;
+}
+
+.login input.btn:hover {
+   background-color:#fff;
+   color:#3498db;
+   font-weight:initial;
+   transition:all .4s;
+}
+
+.loginform hr {
+   margin:40px auto;
+    width:100%;
+}
+
+.loginform .find{
+   margin:40px auto;
+   font-size:1.0rem;
+   color:#444;
+}
+.loginform .find div{
+   display:inline;
+   cursor:pointer;
+}
+.loginform .find div:before {
+   content:' | ';
+   color:#999;
+   font-size:0.9rem;
+}
+.loginform .find div:first-child:before {
+   content:'';
+}
+.loginform .find div:hover {
+   color:#3498db;
+   transition:all .3s;
+}
+
+.extra h4 {
+   margin-bottom:30px;
+   font-size:0.9rem;
+   background-color:#3498db;
+   color:#fff;
+   font-weight:initial;
+   line-height:30px;
+}
+
+.extra div {
+   display:inline;
+   margin:18px;
+}
+
+
+.extra  img{
+   width:40px;
+}
+
+.extra img:hover {
+   cursor:pointer;
+}
+
+.extra hr {
+   margin-top:26px;
+   border:1px solid #3498db;
+}
+
+/*구글로그인버튼*/
+  #customBtn {
+      background: white;
+      color: #444;
+      width: 190px;    
+    }
+    
+    #customBtn:hover {
+      cursor: pointer;
+    }
+  
+
+/*팝업창*/
+/*아이디찾기*/
+
+.check_id .id_back{
+	display:none;
+	z-index:10;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color:#0000007d;
+}
+.check_id .popup {
+	display:none;
+	position: fixed;
+	top:50%;
+	left:50%;
+    max-height: calc(100% - 100px);
+	transform: translate(-50%, -50%);
+	transition: all .5s;
+	background-color:#fff;
+	z-index:20;
+    width: 450px;
+    height: 450px;
+}
+.head h3 {
+	text-align:center;
+	margin:-45px 0 25px 0 ;
+	font-size:1.5rem;
+
+}
+.popup hr {
+	border:0.5px solid #3498db;
+	width:100%;
+	margin: 25px auto;
+}
+.text h5 {
+   text-align:center;
+   color:#333;
+}
+.text{
+	text-align:center;
+	width:60%;
+	margin:0 auto;
+}
+.text input {
+	width:100%;
+	height:30px;
+	margin-bottom:5px;
+	box-sizing:border-box;
+	padding:15px 5px;
+}
+.text .phone {
+	background-color: #3498db;
+	border: 0px;
+	color:#fff;
+	font-size:0.9rem;
+	cursor:pointer;
+	height:34px;
+	padding:0;
+}
+.text input:nth-child(2) {
+	margin-top:25px;
+}
+.text input:nth-child(4),.text input:nth-child(6){
+	width:49%;
+}
+.text input:nth-child(6){
+	padding:17px 5px 13px 5px;
+}
+.text .ok {
+	background-color: #3498db;
+	border: 0;
+	color:#fff;
+	font-size:1rem;
+	cursor:pointer;
+    margin-top:25px;
+    padding:0;
+    height:35px;
+}
+.text h4 {
+	position:absolute;
+	top:60.3%;
+	left:52%;
+	display:none;
+	color:#f50101;
+	font-size:0.8rem;
+	font-weight:initial;
+}
+#timer {
+	position: absolute;
+	color:#f50101;
+	top:53.3%;
+	left:68%;
+	font-size:0.8rem;
+}
+#authbtn:disabled {
+    background-color: #bbabab;
+    cursor: default;
+}
+#authsucess{
+   color:#3498db;
+}
+#show-id {
+	display:none;
+	background-color: #3498db;
+	border:0;
+	color:#fff;
+	font-size:1rem;
+	cursor:pointer;
+    margin-top:30px;
+    padding:0;
+    height:35px;
+}
+
+/*아이디 보여주기*/
+.yourid {
+   display:none;
+   background-color:#fff;
+   z-index:20;
+    top : 25%;
+    left:35%;
+    position: absolute;
+    background: #eeece6b;
+    width: 400px;
+    height: 350px;
+}
+
+.btn-x {
+   border:0;
+   background-color:#fff;
+   font-size:1.4rem;
+   margin: 18px 360px; 
+}
+
+.yourid h3 {
+   font-size:1.2rem;
+  text-align:center;
+  margin:-20px 0 20px 0;
+}
+
+.yourid hr {
+	border :0.65px solid #3498db;
+}
+.yourid h6 {
+    margin:50px 0 70px 50px;
+    font-size:1rem;
+}
+
+.yourid span{
+   color:#3498db;
+   font-size:1.3rem;
+}
+.yourid .btn {
+   background-color: #3498db;
+   border: #3498db;
+   color:#fff;
+   font-size:1rem;
+   cursor:pointer;
+   height:30px;
+    width:100px;
+    margin : 20px 0 0 150px;
+}
+
+
+	/*비밀번호찾기*/
+
+	.pw_back{
+	   display:none;
+	   z-index:10;
+		position: fixed;
+		width: 100%;
+		height: 1000px;
+		top: 0px;
+		left: 0px;
+		background-color:#7575749e;
+	}
+
+	.check_pw .popup2 {
+	   display:none;
+	   background-color:#fff;
+	   z-index:20;
+		top : 15%;
+		left:35%;
+		position: absolute;
+		background: #eeece6b;
+		width: 450px;
+		height: 500px;
+	}
+
+	.head button {
+	   margin: 24px 410px; 
+	   border: 0;
+	   background-color:#fff;
+	   font-size:1.5rem;
+	}
+
+	.head button:hover {
+	   cursor:pointer;
+	   color:#9E9E9E;
+	}
+
+	.head h4 {
+	   margin:-40px 0 25px 165px ;
+	   font-size:1.5rem;
+	}
+	.popup2 hr {
+		border:0.5px solid #3498db;
+	}
+	.popup2 .text h3 {
+	   margin:30px 0;
+	   font-size:0.85rem;
+	}
+
+	.popup2 .text input:nth-child(2) {
+	   margin: 0 0 5px 0;
+	}
+	.popup2 .text input:nth-child(4) {
+		width:100%;
+	} 
+	.popup2 .text input:nth-child(5) {
+	   width:45%;
+	}
+
+	.popup2 h5 {
+	   display:none;
+	  }
+	.popup2 .text input:nth-child(6) {
+	   width:53%;
+	}
+
+	.popup2 .text h6 {
+	   display:none;
+	   color:#f50101;
+	   margin:-65px 0 0 125px;
+	}
+
+	#authsucess2 {
+	   display:none;
+	   color:#3498db;
+	}
+
+	#change-pw {
+	   display:none;
+	   background-color: #3498db;
+	   border: 0;
+	   color:#fff;
+	   font-size:0.9rem;
+	   cursor:pointer;
+	   margin:80px 0 20px 0;
+	   padding:0;
+	   height:35px;
+	 }
+
+	#timer2 {
+	   position: absolute;
+	   color:#f50101;
+	   top:18.4rem;
+	   left:18.8rem;
+	   font-size:0.83rem;
+	}
+
+
+	#authbtn2:disabled {
+		background-color: #bbabab;
+		cursor: default;
+	}
+
+	/*비밀번호 교체하기*/
+	.changepass {
+		display:none;
+	   background-color:#fff;
+	   z-index:20;
+		top : 20%;
+		left: 38%;
+		position: absolute;
+		background: #eeece6b;
+		width: 500px;
+		height: 400px;
+	}
+
+	.changepass h2 {
+	   text-align:center;
+	   font-size:1.2rem; 
+	   margin:30px auto;
+	}
+	.changepass hr {
+	   border:0.5px solid #3498db;
+	}
+
+	.changepass h3 {
+	   margin:30px 0 0 150px;
+		font-size:0.85rem;
+	}
+
+	.changepass h4 {
+	   margin:5px 0 0 100px;
+	   font-size:0.84rem;
+	}
+
+	.changepass  input:nth-child(5){
+	   margin:20px 0 0 150px;
+	   height:22px;
+	   width:200px;
+	}
+
+	.changepass h5 {
+	   display:none;
+	   font-size:0.74rem;
+	   color:#f50101;
+	   margin:4px 0 -18px 154px;
+	}
+
+	.changepass  input:nth-child(7){
+	   margin:25px 0 0 150px;
+	   height:22px;
+	   width:200px;
+	}
+
+	.changepass h6 {
+	   display:none;
+	   font-size:0.75rem;
+	   color:#f50101;
+	   margin:5px 0 -19px 154px;
+	}
+	#update-pw {
+	   width:205px;
+	   height:30px;
+	   margin:35px 150px;
+	   background-color: #3498db;
+	   border: #3498db;
+	   color:#fff;
+	   font-size:1rem;
+	   cursor:pointer;
+	 
+	}
+
+
+/****반응형UI****/
+@media screen and (max-width:768px) {
+
+	.title-text {
+	   position: absolute;
+	   right: 0;
+	   left: 0;
+	   display: -webkit-box;
+	   display: -moz-box;
+	   display: -ms-flexbox;
+	   display: -webkit-flex;
+	   display: flex;
+	   align-items: center;
+	   justify-content: center;
+	   -webkit-align-items: center;
+	   -webkit-justify-content: center;
+	   -webkit-box-pack: center;
+	   -webkit-box-align: center;
+	   -moz-box-pack: center;
+	   -moz-box-align: center;
+	   -ms-box-pack: center;
+	   -ms-box-align: center;
+	}
+
+	.title-text h2 {
+	   font-size: 2rem;
+	   color: #444;
+	}
+	/*아래의 width로 파란 줄 길이 조절 가능*/
+	.title-text h2:before {
+	   content: '';
+	   display: block;
+	   width: 40%;
+	   height: 6px;
+	   background-color: #3498db;
+	   margin-bottom: 6px;
+	   vertical-align: middle;
+	}
+
+
+	/*로그인*/
+	#test .content{
+	   margin:0 auto;
+	}
+
+	.loginform{
+	   height:540px;
+		width:100%;
+		margin: -50px auto;
+		text-align:center;   
+	}
+
+	.loginform div input {
+	   width:100%;
+	}
+
+	.loginform .txtln {
+	   height:40px;
+	   margin-top:20px;
+	   padding-left:10px;
+	   border:1.4px solid #9E9E9E;
+	   box-sizing:border-box;
+	}
+
+	.login .btn {
+	   margin-top:20px;
+	   background-color: #3498db;
+	   border:2px solid #3498db;
+	   color:#fff;
+	   line-height: 45px;
+	   border-radius: 6px;
+	   font-size:1rem;
+	   cursor:pointer;
+	   font-weight:bold;
+	   text-align:center;
+	}
+
+	.login input.btn:hover {
+	   background-color:#fff;
+	   color:#3498db;
+	   font-weight:initial;
+	   transition:all .4s;
+	}
+
+	.loginform hr {
+	   margin:40px auto;
+		width:100%;
+	}
+
+	.loginform .find{
+	   margin:40px auto;
+	   font-size:1.0rem;
+	   color:#444;
+	}
+	.loginform .find div{
+	   display:inline;
+	   cursor:pointer;
+	}
+	.loginform .find div:before {
+	   content:' | ';
+	   color:#999;
+	   font-size:0.9rem;
+	}
+	.loginform .find div:first-child:before {
+	   content:'';
+	}
+	.loginform .find div:hover {
+	   color:#3498db;
+	   transition:all .3s;
+	}
+
+	.extra h4 {
+	   margin-bottom:30px;
+	   font-size:0.9rem;
+	   background-color:#3498db;
+	   color:#fff;
+	   font-weight:initial;
+	   line-height:30px;
+	}
+
+	.extra div {
+	   display:inline;
+	   margin:18px;
+	}
+
+
+	.extra  img{
+	   width:40px;
+	}
+
+	.extra img:hover {
+	   cursor:pointer;
+	}
+
+	.extra hr {
+	   margin-top:26px;
+	   border:1px solid #3498db;
+	}
+
+	/*구글로그인버튼*/
+	  #customBtn {
+		  background: white;
+		  color: #444;
+		  width: 190px;    
+		}
+
+		#customBtn:hover {
+		  cursor: pointer;
+		}
+
+
+	/*팝업창*/
+	/*아이디찾기*/
+
+	.check_id .id_back{
+		display:none;
+		z-index:10;
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		top: 0px;
+		left: 0px;
+		background-color:#0000007d;
+	}
+	.check_id .popup {
+		display:none;
+		position: fixed;
+		top:45%;
+		left:50%;
+		max-height: calc(100% - 100px);
+		transform: translate(-50%, -50%);
+		transition: all .5s;
+		background-color:#fff;
+		z-index:20;
+		width: 100%;
+		height: 420px;
+	}
+	.head .close {
+		 margin-left:80% !important;
+	}
+	.head h3 {
+		text-align:center;
+		margin:-45px 0 25px 0 ;
+		font-size:1.5rem;
+	}
+	.popup hr {
+		border:0.5px solid #3498db;
+		width:100%;
+		margin: 25px auto;
+	}
+	.text h5 {
+		text-align:center;
+		color:#333;
+		font-size:0.7rem;
+	}
+	.text{
+		text-align:center;
+		width:60%;
+		margin:0 auto;
+	}
+	.text input {
+		width:100%;
+		height:30px;
+		margin-bottom:5px;
+		box-sizing:border-box;
+		padding:15px 5px;
+	}
+	.text .phone {
+		background-color: #3498db;
+		border: 0px;
+		color:#fff;
+		font-size:0.9rem;
+		cursor:pointer;
+		height:34px;
+		padding:0;
+	}
+	.text input:nth-child(2) {
+		margin-top:25px;
+	}
+	.text input:nth-child(4){
+		width:42%;
+	}
+	.text input:nth-child(6){
+		width:55%;
+	}
+	
+	.text .ok {
+		background-color: #3498db;
+		border: 0;
+		color:#fff;
+		font-size:1rem;
+		cursor:pointer;
+		margin-top:25px;
+		padding:0;
+		height:35px;
+	}
+	.text h4 {
+		position:absolute;
+		top:63.2%;
+		left:48%;
+		display:none;
+		color:#f50101;
+		font-size:0.7rem;
+		font-weight:initial;
+	}
+	#timer {
+		position: absolute;
+		color:#f50101;
+		top:57%;
+		left:65%;
+		font-size:0.8rem;
+	}
+	#authbtn:disabled {
+		background-color: #bbabab;
+		cursor: default;
+	}
+	#authsucess{
+	   color:#3498db;
+	}
+	#show-id {
+		display:none;
+		background-color: #3498db;
+		border:0;
+		color:#fff;
+		font-size:1rem;
+		cursor:pointer;
+		margin-top:20px;
+		padding:0;
+		height:35px;
+	}
+
+
+	/*아이디 보여주기*/
+	.yourid {
+	  display:none;
+		position: fixed;
+		top:40%;
+		left:50%;
+		max-height: calc(100% - 100px);
+		transform: translate(-50%, -50%);
+		transition: all .5s;
+		background-color:#fff;
+		z-index:20;
+		width: 100%;
+		height: 350px;
+	} 
+	.btn-x {
+	   margin:30px 0 -30px 88%;
+	   border:0;
+	   background-color:#fff;
+	   font-size:1.5rem;
+	}
+	.yourid h3 {
+	   margin: -15px 0 30px 0 ;
+	   text-align:center;
+	   font-size:1.4rem;
+	}
+
+	.yourid hr {
+	   border:1px solid #3498db;;
+	   width:100%;
+	   margin: 10px auto;
+	}
+
+	.yourid h6 {
+		text-align:center;
+		font-size:0.8rem;
+		margin-left:-5px;
+	}
+
+	.yourid span{
+	   color:#3498db;
+	   font-size:1.rem;
+	}
+	.yourid .btn {
+	   background-color: #3498db;
+	   border: #3498db;
+	   color:#fff;
+	   font-size:1.2rem;
+	   font-weight:normal;
+		width:30%;
+		margin : 10px 0 0 35%;
+	}
+
+
+	/*비밀번호찾기*/
+   .pw_back{
+		display:none;
+		z-index:10;
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		top: 0px;
+		left: 0px;
+		background-color:#0000007d;
+	}
+	.check_pw .popup2 {
+		display:none;
+		position: fixed;
+		top:45%;
+		left:50%;
+		max-height: calc(100% - 100px);
+		transform: translate(-50%, -50%);
+		transition: all .5s;
+		background-color:#fff;
+		z-index:20;
+		width: 100%;
+		height: 480px;
+	}
+	.head .close {
+	   margin-left:87% !important;
+	   border: 0;
+	   background-color:#fff;
+	   font-size:1.5rem;
+	}
+	.head h4 {
+	font-size:1.5rem;
+	   margin-left:33% !important;
+	}
+	.head button:hover {
+	   cursor:pointer;
+	   color:#9E9E9E;
+	}
+
+	.popup2 hr {
+		border:0.5px solid #3498db;
+	}
+	.popup2 .text h3 {
+	   margin:30px 0;
+	   font-size:0.72rem;
+	}
+
+	.popup2 .text input:nth-child(2) {
+	   margin: 0 0 5px 0;
+	}
+	.popup2 .text input:nth-child(4) {
+		width:100%;
+	} 
+	.popup2 .text input:nth-child(5) {
+	   width:42%;
+	}
+
+	.popup2 h5 {
+	   display:none;
+	  }
+	.popup2 .text input:nth-child(6) {
+	   width:55%;
+	}
+
+	.popup2 .text h6 {
+	   position:absolute;
+		top:80.1%;
+		left:15.5%;
+		display:none;
+		color:#f50101;
+		font-size:0.7rem;
+		font-weight:initial;
+	}
+
+	#authsucess2 {
+	   display:none;
+	   color:#3498db;
+	}
+
+	#change-pw {
+	   display:none;
+	   background-color: #3498db;
+	   border: 0;
+	   color:#fff;
+	   font-size:0.9rem;
+	   cursor:pointer;
+	   margin:20px 0;
+	   height:35px;
+	 }
+
+	#timer2 {
+	   position: absolute;
+	   color:#f50101;
+	   top:61%;
+	   left:64.5%;
+	   font-size:0.83rem;
+	}
+
+	#authbtn2:disabled {
+		background-color: #bbabab;
+		cursor: default;
+	}
+
+	/*비밀번호 교체하기*/
+	.changepass {
+		display:none;
+		position: fixed;
+		top:45%;
+		left:50%;
+		max-height: calc(100% - 100px);
+		transform: translate(-50%, -50%);
+		transition: all .5s;
+		background-color:#fff;
+		z-index:20;
+		width: 100%;
+		height: 360px;
+	}
+
+	.changepass h2 {
+	   font-size:1.2rem; 
+	   text-align:center;
+	}
+
+	.changepass hr {
+	   border:0.5px solid #3498db;
+	}
+
+	.changepass h3 {
+	   text-align:center;
+	   margin-left:3%;
+		font-size:0.78rem;
+	}
+
+	.changepass h4 {
+	   text-align:center;
+	   margin-left:5%;
+	   font-size:0.75rem;
+	}
+   
+	.changepass input:nth-child(5){
+	   margin:30px 0 0 25%;
+	   height:22px;
+	   width:50%;
+	   padding-left:5px;
+	}
+
+	.changepass h5 {
+	   display:none;
+	   font-size:0.65rem;
+	   color:#f50101;
+	   margin:3px 0 -15px 26%;
+	}
+
+	.changepass  input:nth-child(7){
+	   margin:25px 0 0 25%;
+	   height:22px;
+	   width:50%;
+	   padding-left:5px;
+	}
+
+	.changepass h6 {
+	   display:none;
+	   font-size:0.65rem;
+	   color:#f50101;
+	   margin:3px 0 -15px 26%;
+	}
+	#update-pw {
+	   width:40%;
+	   height:30px;
+	   margin:45px 0 0 31%;
+	   background-color: #3498db;
+	   border: #3498db;
+	   color:#fff;
+	   font-size:1rem;
+	   cursor:pointer;
+	   font-weight:bold;
+	}
+
+}

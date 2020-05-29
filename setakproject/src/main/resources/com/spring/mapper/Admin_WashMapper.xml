@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.Admin_WashMapper">
+	
+	<resultMap type = "java.util.HashMap" id="hashmapVO">
+		<result property="wash_rnum" column="rnum" />
+		<result property="wash_seq" column="wash_seq" />
+		<result property="order_num" column="order_num" />
+		<result property="member_id" column="member_id" />
+		<result property="wash_cate" column="wash_cate" />
+		<result property="wash_kind" column="wash_kind" />
+		<result property="wash_method" column="wash_method" />
+		<result property="wash_count" column="wash_count" />
+		<result property="wash_now" column="wash_now" />
+	</resultMap>
+	
+	<select id="getWashList" resultMap="hashmapVO">
+		select rownum rnum, wash_seq, member_id, order_num, wash_cate, wash_kind, wash_method, wash_count, wash_now
+		from (select rownum rnum, b.wash_seq, b.order_num, a.member_id, c.wash_cate, c.wash_kind, c.wash_method, c.wash_count, c.wash_now
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join washing c
+		        on b.wash_seq = c.wash_seq
+		        where b.wash_seq > 0
+		        order by c.wash_seq desc)
+	</select>
+	
+	<update id="updateWash" parameterType="com.spring.setak.WashingVO">
+		update washing set wash_cate = #{wash_cate}, wash_kind = #{wash_kind}, wash_method = #{wash_method}, wash_count = #{wash_count}, wash_now = #{wash_now} where wash_seq=#{wash_seq}
+	</update>
+	
+	<delete id="deleteWash" parameterType="int">
+		delete from washing where wash_seq = #{wash_seq}
+	</delete>
+	
+	<select id="washSearch" parameterType="java.util.HashMap" resultMap="hashmapVO">
+		select rownum rnum, wash_seq, member_id, order_num, wash_cate, wash_kind, wash_method, wash_count, wash_now
+		from (select rownum rnum, b.wash_seq, b.order_num, a.member_id, c.wash_cate, c.wash_kind, c.wash_method, c.wash_count, c.wash_now
+		        from memberorder a
+		        join orderlist b
+		        on a.order_num = b.order_num
+		        right join washing c
+		        on b.wash_seq = c.wash_seq
+		        where b.wash_seq > 0
+			<if test = "keyword != null">
+				and (a.member_id like '%'||#{keyword, jdbcType=VARCHAR}||'%')
+			</if>
+			order by c.wash_seq desc)
+	</select>
+	
+</mapper>

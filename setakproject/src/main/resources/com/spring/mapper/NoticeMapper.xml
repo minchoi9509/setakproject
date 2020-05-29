@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.NoticeMapper">
+	
+	<resultMap type="com.spring.community.NoticeVO" id="noticeMap">
+		<result property="notice_num" column="notice_num"/>
+		<result property="notice_title" column="notice_title"/>
+		<result property="notice_content" column="notice_content"/>		
+		<result property="notice_date" column="notice_date"/>	
+	</resultMap>
+	
+	
+	<select id="getNoticeList" parameterType="com.spring.community.NoticeVO" resultMap="noticeMap">
+<![CDATA[ select * from(select rownum rnum, notice_num, notice_title, notice_content, 
+notice_date from (select * from NOTICE order by notice_num desc)) 
+where rnum>=#{arg0} and rnum<=#{arg1}]]>
+	</select>
+	
+	<select id="getListCount" resultType="int">
+		select count(*) from NOTICE
+	</select>
+
+	<select id="getDetail" parameterType="com.spring.community.NoticeVO" resultType="com.spring.community.NoticeVO">
+		select * from NOTICE where notice_num = #{notice_num}
+	</select>
+			
+	<insert id="noticeInsert" parameterType="com.spring.community.NoticeVO">
+		insert into NOTICE values(#{notice_num}, #{notice_title, jdbcType=VARCHAR},
+		#{notice_content, jdbcType=VARCHAR}, sysdate)	
+	</insert>
+	<update id="noticeModify" parameterType="com.spring.community.NoticeVO">
+		update NOTICE set notice_title=#{notice_title}, 
+		notice_content=#{notice_content, jdbcType=VARCHAR},
+		notice_date=#{notice_date} 
+		where  NOTICE_NUM=#{notice_num}
+	</update>
+
+	<delete id="noticeDelete" parameterType="com.spring.community.NoticeVO">
+		delete from NOTICE where notice_num = #{notice_num}
+	</delete>
+
+	<select id="getMaxNum" resultType="int">
+		select max(notice_num) from NOTICE
+	</select>
+	
+<!-- 어드민 Mapper -->
+	<select id="ad_noticeList" parameterType="com.spring.community.NoticeVO" resultMap="noticeMap">
+		SELECT * FROM notice ORDER BY notice_num desc       		
+	</select>	
+	
+	<delete id="ad_noticeDelete" parameterType="com.spring.community.NoticeVO">
+		delete from NOTICE where notice_num in ( notice_num=#{notice_num},)
+		
+		<!-- delete from NOTICE where notice_num in( 5, 8) -->
+	</delete>
+	
+
+</mapper>
+

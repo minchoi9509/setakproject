@@ -1,0 +1,373 @@
+@charset "utf-8";
+
+#title {
+	height: 148px;
+}
+.title-text {
+	position: absolute;
+	right: 0;
+	left: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+}
+
+.title-text h2 {
+	font-size: 2rem;
+	color: #444;
+}
+/*아래의 width로 파란 줄 길이 조절 가능*/
+.title-text h2:before {
+	content: '';
+	display: block;
+	width: 40%;
+	height: 6px;
+	background-color: #3498db;
+	margin-bottom: 6px;
+	vertical-align: middle;
+}
+
+/*
+   default.css에 body와 a랑 뭐 기타등등 속성들 기본값 저장해놨으니 한번확인해주세요
+   content를 미리 해놨기때문에 자동으로 1200px안에 중앙정렬돼서 출력될겁니다. 참고 >_-(찡긋)
+   폰트사이즈는 무조건 rem으로 작업해주세요.
+   */
+
+/*변경된 클래스와 아이디로 작업하세요*/
+
+
+#test .content{
+	width: 800px;
+	height: 700px;
+
+}
+.mypage_head {
+	width: 150px;
+	box-sizing: border-box;
+	float: left;
+	margin-left:-220px;
+	margin-top:-30px;
+}
+
+.mypage_head>ul>li:nth-child(2) {
+	border: 2px solid #e1e4e4;
+	border-top: 0px;
+	padding-bottom: 60px;
+}
+
+.mypage-title {
+	height: 130px;
+	background-color: #3498db;
+	width: 100%;
+	color: #fff;
+	line-height: 130px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.mypage_list{
+      padding:20px 0 0 15px;
+      color:#444;
+   }
+   .mypage_list li{
+      font-size:0.86rem;
+      padding-top:5px;
+      display:block;
+   }
+   .mypage_list li:first-child{
+      font-weight:bold;
+        font-size:1rem;
+   }
+
+   .mypage_list li a{
+      color:#444;
+    }
+    .mypage_list li a:hover{
+       font-weight:bold;
+    }
+
+
+/*탈퇴*/
+.withdraw {
+	height: 500px;
+	width: 800px;
+	margin-left:50px;
+	margin-top:-20px
+}
+
+.withdraw h3 {
+	font-size:1.2rem;
+	font-weight:initial;
+}
+
+.withdraw h3 span {
+	font-size:0.7rem;
+	margin-left:10px;
+	color:#595959;
+}
+
+.withdraw hr {
+	border:0.8px solid #3498db;
+	margin:30px auto;
+}
+
+
+.withdraw h4 {
+	font-size:0.9rem;
+	font-weight:initial;
+	margin:15px auto;
+}
+
+.withdraw h4 span {
+	font-weight:bold;
+	font-size:0.9rem;
+}
+
+.withdraw h5 {
+	color:#ff2616;
+	font-size:1rem;
+	text-align:center;
+	margin-top:70px;
+}
+
+.withdraw .btn{
+	background-color:#fff;
+	margin-top:30px;
+	margin-left: 380px;
+	border:0;
+	border:1px solid #9E9E9E;
+	color:#8e8787;
+}
+
+/*탈퇴팝업*/
+
+
+.alert_withdraw {
+	display:none;
+	z-index:99999;
+    top : 40%;
+    left:35%;
+    position: absolute;
+    background: #f6ecdc;
+    width: 450px;
+    height: 300px;
+    border:1px solid;
+	
+}
+
+.alert_withdraw .content h3 {
+	font-size:1rem;
+	margin-left:70px;
+}
+
+.alert_withdraw .content h3:nth-child(1) {
+	margin-top:80px;
+	margin-bottom:20px;
+
+}
+
+.alert_withdraw .content h3:nth-child(2) {
+    margin-bottom:20px;
+}
+
+.close {
+	margin:50px 300px;
+	width:70px;
+	border:1px solid #3498bd;
+	background-color:#3498db;
+	color:#fff;
+}
+
+
+/****반응형UI****/
+@media screen and (max-width:768px) {
+
+	.title-text {
+		position: absolute;
+		right: 0;
+		left: 0;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		-webkit-box-pack: center;
+		-webkit-box-align: center;
+		-moz-box-pack: center;
+		-moz-box-align: center;
+		-ms-box-pack: center;
+		-ms-box-align: center;
+	}
+	
+	.title-text h2 {
+		font-size: 1.6rem;
+		color: #444;
+	}
+	/*아래의 width로 파란 줄 길이 조절 가능*/
+	.title-text h2:before {
+		content: '';
+		display: block;
+		width: 40%;
+		height: 5px;
+		background-color: #3498db;
+		margin-bottom: 6px;
+		vertical-align: middle;
+	}
+	
+	#test .content{
+		width: 97%;
+		height: 450px;
+	
+	}
+	.mypage_head {
+		display:none;
+		width: 150px;
+		box-sizing: border-box;
+		float: left;
+		margin-left:-220px;
+		margin-top:-30px;
+	}
+	
+	.mypage_head>ul>li:nth-child(2) {
+		border: 2px solid #e1e4e4;
+		border-top: 0px;
+		padding-bottom: 60px;
+	}
+	
+	.mypage-title {
+		height: 130px;
+		background-color: #3498db;
+		width: 100%;
+		color: #fff;
+		line-height: 130px;
+		text-align: center;
+		font-weight: bold;
+		font-size: 1rem;
+	}
+	
+	.mypage_list{
+	      padding:20px 0 0 15px;
+	      color:#444;
+	   }
+	   .mypage_list li{
+	      font-size:0.86rem;
+	      padding-top:5px;
+	      display:block;
+	   }
+	   .mypage_list li:first-child{
+	      font-weight:bold;
+	        font-size:1rem;
+	   }
+	
+	   .mypage_list li a{
+	      color:#444;
+	    }
+	    .mypage_list li a:hover{
+	       font-weight:bold;
+	    }
+	
+	
+	/*탈퇴*/
+	.withdraw {
+		height: 500px;
+		width: 100%;
+		margin:-50px auto;
+	}
+	
+	.withdraw h3 {
+		font-size:1.2rem;
+	}
+	
+	.withdraw h3 span {
+		font-size:0.7rem;
+		color:#595959;
+	}
+	
+	.withdraw hr {
+		border:0.8px solid #3498db;
+		margin:30px auto;
+	}
+	
+	
+	.withdraw h4 {
+		font-size:0.8rem;
+		font-weight:initial;
+		margin:15px auto;
+	}
+	
+	.withdraw h4 span {
+		font-weight:bold;
+		font-size:0.8rem;
+	}
+	
+	.withdraw h5 {
+		color:#ff2616;
+		font-size:0.8rem;
+		text-align:center;
+		margin-top:70px;
+	}
+	
+	.withdraw .btn{
+		background-color:#fff;
+		margin:40px 140px;
+		border:0;
+		border:1px solid #9E9E9E;
+		color:#8e8787;
+	}
+	
+	/*탈퇴팝업*/
+	
+	
+	.alert_withdraw {
+		display:none;
+		z-index:99999;
+	    top : 20%;
+	    left : 10%;
+	    position: absolute;
+	    background: #f6ecdc;
+	    width: 80%;
+	    height: 300px;
+	    border:1px solid #f6ecdc;
+		
+	}
+	
+	.alert_withdraw .content h3 {
+		font-size:0.77rem;
+		margin-left:20px;
+	}
+	
+	.alert_withdraw .content h3:nth-child(1) {
+		margin-top:80px;
+		margin-bottom:20px;
+	
+	}
+	
+	.alert_withdraw .content h3:nth-child(2) {
+	    margin-bottom:20px;
+	}
+	
+	.close {
+		margin:50px 100px;
+		width:70px;
+		border:1px solid #3498bd;
+		background-color:#3498db;
+		color:#fff;
+	}
+}

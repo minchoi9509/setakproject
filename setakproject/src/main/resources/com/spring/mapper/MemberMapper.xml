@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.MemberMapper">
+   <resultMap type="com.spring.member.MemberVO" id="membervo">
+      <result property="member_name" column="member_name"/>
+      <result property="member_id" column="member_id"/>
+      <result property="member_password" column="member_password" />
+      <result property="pw2" column="pw2"/>
+      <result property="member_phone" column="member_phone"/>
+      <result property="member_email" column="member_email"/>
+      <result property="member_zipcode" column="member_zipcode"/>
+      <result property="member_loc" column="member_loc"/>
+      <result property="member_join" column="member_join"/>
+   </resultMap>
+   
+   <!-- 아이디 확인(중복여부)  -->
+   <select id="member_id" parameterType="com.spring.member.MemberVO" resultType="string">
+   		SELECT member_id FROM member WHERE member_id=#{member_id, jdbcType=VARCHAR} 
+   </select>
+   
+   <!-- 회원가입 -->
+   <insert id="member_insert" parameterType="com.spring.member.MemberVO" >
+		INSERT INTO member(member_name, member_id, member_password, member_phone, member_email, member_zipcode, member_loc, member_join)
+		VALUES (#{member_name}, #{member_id, jdbcType=VARCHAR}, #{member_password, jdbcType=VARCHAR}, #{member_phone}, #{member_email}, #{member_zipcode}, #{member_loc}, sysdate)
+   </insert>
+   
+   <!-- 비밀번호 확인 -->
+   <select id="member_password" parameterType="com.spring.member.MemberVO" resultType="string">
+		SELECT member_password FROM member WHERE member_id=#{member_id, jdbcType=VARCHAR}
+   </select>
+   
+   <select id="member_password2" parameterType="HashMap" resultType="String">
+		SELECT member_password FROM member WHERE member_id=#{member_id, jdbcType=VARCHAR}
+   </select>
+   
+   <!-- 회원정보 출력 -->
+   <select id="member_list" parameterType="com.spring.member.MemberVO" resultMap="membervo">
+      SELECT * FROM member WHERE member_id=#{member_id, jdbcType=VARCHAR} 
+   </select>
+   
+   <!-- 회원정보 수정 -->
+   <update id="member_update" parameterType="com.spring.member.MemberVO" >
+   		UPDATE member 
+   		SET member_password=#{member_password}, member_name=#{member_name}, member_phone=#{member_phone}, member_email=#{member_email}, member_zipcode=#{member_zipcode}, member_loc=#{member_loc} 
+   		WHERE member_id= #{member_id, jdbcType=VARCHAR}
+   </update>
+   
+     <!-- 정기구독에서 멤버이름 -->
+    <select id="name" parameterType="String" resultMap="membervo">
+   		SELECT member_name FROM member WHERE member_id=#{member_id, jdbcType=VARCHAR}
+   </select>
+   
+    <!-- 로그인 연동시 회원가입 -->
+   <insert id="linkage" parameterType="com.spring.member.MemberVO"  >
+   		INSERT INTO member(member_name, member_id, member_email, member_join, member_loc)
+		VALUES (#{member_name}, #{member_id, jdbcType=VARCHAR}, #{member_email}, sysdate, #{member_loc})
+   </insert>
+   
+   <!-- 아이디 보여주기 -->
+   <select id="show_id" parameterType="HashMap" resultType="String">
+   		SELECT member_id
+   		FROM member
+   		WHERE member_name= #{member_name, jdbcType=VARCHAR} and member_phone=#{member_phone, jdbcType=VARCHAR}
+   </select> 
+   
+   <!-- 비밀번호 찾기- 변경하기 버튼  -->
+   <select id="chk_you" parameterType="HashMap" resultType="String">
+   		SELECT member_id
+   		FROM member
+   		WHERE member_name= #{member_name, jdbcType=VARCHAR} and member_phone=#{member_phone, jdbcType=VARCHAR} 
+   </select> 
+   
+   <!-- 비밀번호 변경 -->
+   <update id="change_pw" parameterType="HashMap" >
+   		UPDATE member 
+   		SET member_password=#{member_password} 
+		WHERE member_id=#{member_id, jdbcType=VARCHAR}
+   </update>
+   
+   <!-- 회원삭제 -->
+   <delete id="member_delete" parameterType="String">
+   		DELETE FROM member WHERE member_id= #{member_id, jdbcType=VARCHAR}
+   </delete>
+   
+   <!-- 탈퇴신청 -->
+</mapper>

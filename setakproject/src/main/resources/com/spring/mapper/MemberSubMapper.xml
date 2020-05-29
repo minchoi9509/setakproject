@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.spring.mapper.MemberSubMapper">
+	
+	<!-- 컬럼명 제대로 확인 -->
+   <resultMap type="com.spring.member.MemberSubVO" id="member_sub">
+      <result property="member_id" column="member_id"/>
+      <result property="washcnt" column="washcnt" />
+      <result property="shirtscnt" column="shirtscnt"/>
+      <result property="drycnt" column="drycnt"/>
+      <result property="blacketcnt" column="blacketcnt"/>
+      <result property="deliverycnt" column="deliverycnt"/>
+      <result property="subs_start" column="subs_start"/>
+      <result property="subs_end" column="subs_end"/>
+      <result property="subsname" column="subsname"/>
+      <result property="subsprice" column="subsprice"/>
+      <result property="subs_cancel" column="subs_cancel"/>
+      <result property="customer_uid" column="customer_uid"/>
+   </resultMap>
+   
+   <resultMap type="com.spring.member.SubscribeVO" id="subscribe">
+   		<result property="subs_water" column="subs_water"/>
+   		<result property="subs_shirts" column="subs_shirts"/>
+   		<result property="subs_dry" column="subs_dry"/>
+   		<result property="subs_blanket" column="subs_blanket"/>
+   		<result property="subs_delivery" column="subs_delivery"/>
+   </resultMap>
+   
+   <resultMap type="com.spring.member.HistorySubVO" id="mysubhistory">
+   		 <result property="member_id" column="member_id"/>
+   		 <result property="his_name" column="his_name"/>
+   		 <result property="his_price" column="his_price"/>
+   		 <result property="his_date" column="his_date"/>
+   		 <result property="review_chk" column="review_chk"/>
+   </resultMap>
+   
+   <resultMap type="com.spring.member.MemberSubVO" id="subsbye">
+   	 <result property="member_id" column="member_id"/>
+   	 <result property="subs_bye" column="subs_bye"/>
+   </resultMap>
+   
+   <!--나의정기구독   -->
+   <select id="sub_list" parameterType="String" resultMap="member_sub">
+   		SELECT * FROM member_subs WHERE member_id=#{member_id, jdbcType=VARCHAR} 
+   </select>
+   
+   <!--해당 정기구독 리스트   -->
+   <select id="subscribe_list" parameterType="String" resultMap="subscribe">
+   		SELECT subs_water, subs_shirts, subs_dry, subs_blanket, subs_delivery 
+   		FROM subscribe 
+   		WHERE subs_num = (SELECT subs_num 
+   						  FROM  member 
+   						  WHERE member_id=#{member_id, jdbcType=VARCHAR} ) 
+  </select>
+  
+  <!--정기구독 내역 리스트  -->
+   <select id="subhistory_list" parameterType="HashMap" resultMap="mysubhistory">
+		SELECT *
+		FROM (SELECT rownum rnum, a.* 
+      		  FROM (SELECT * 
+               		FROM subs_history
+               		where member_id=#{member_id, jdbcType=VARCHAR}
+           			ORDER BY his_date desc ) a)
+        WHERE <![CDATA[ rnum>=#{startrow} and rnum<=#{endrow} ]]> 
+   </select> 
+   
+    <!-- 정기구독 리스트 갯수 -->
+   <select id="listcount" parameterType="String" resultType="int">
+   		SELECT count(*) FROM subs_history WHERE member_id=#{member_id, jdbcType=VARCHAR}
+   </select>
+   
+   <!-- 수거고 -->
+    <update id="sugo2" parameterType="String">
+   	UPDATE member_subs
+   	SET subs_cancel = '2'
+   	WHERE member_id =#{member_id, jdbcType=VARCHAR}
+   </update>
+   
+   <!-- 수거고취소 -->
+ 	<update id="sugo0" parameterType="String">
+   	UPDATE member_subs
+   	SET subs_cancel = '0'
+   	WHERE member_id =#{member_id, jdbcType=VARCHAR}
+   </update>
+   
+   <!-- 구독해지함 -->
+   <update id="subcancle" parameterType="String">
+   	UPDATE member_subs
+   	SET subs_bye = '1'
+   	WHERE member_id =#{member_id, jdbcType=VARCHAR}
+   </update>
+   
+     <!-- 재구독함 -->
+   <update id="resub" parameterType="String">
+   	UPDATE member_subs
+   	SET subs_bye = '0'
+   	WHERE member_id =#{member_id, jdbcType=VARCHAR}
+   </update>
+   
+   <!-- 리뷰 작성 -->
+   <update id="review_chk" parameterType="HashMap">
+   	UPDATE subs_history
+   	SET review_chk = '1'
+   	WHERE member_id =#{member_id, jdbcType=VARCHAR} and trunc(his_date) =#{his_date, jdbcType=DATE}
+   </update>
+   
+</mapper>
+   
