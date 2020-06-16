@@ -72,6 +72,13 @@ __API__
 &nbsp; :bulb: __QnA__
 ![슬라이드4](https://user-images.githubusercontent.com/53928609/83320088-1714b200-a27f-11ea-8133-0e1ab480a051.PNG)
 
+### :pushpin: 구현 화면
+![슬라이드1](https://user-images.githubusercontent.com/53928609/84728583-8226ee00-afcc-11ea-92ec-5e060c9c4b11.PNG)
+![슬라이드2](https://user-images.githubusercontent.com/53928609/84728591-8521de80-afcc-11ea-80a4-6da9e5fa2c82.PNG)
+![슬라이드3](https://user-images.githubusercontent.com/53928609/84728596-86eba200-afcc-11ea-8f4d-19ae91aa94d5.PNG)
+![슬라이드4](https://user-images.githubusercontent.com/53928609/84728601-88b56580-afcc-11ea-938a-d8a73f511de2.PNG)
+![슬라이드5](https://user-images.githubusercontent.com/53928609/84728611-8b17bf80-afcc-11ea-8499-a884a7280439.PNG)
+
 
 ### :pushpin: 구현 중 겪었던 어려움과 아쉬운 점
 #### 어려웠던 점
