@@ -557,17 +557,7 @@ public class OrderController {
       Iamport iamport = new Iamport();
 
       // 아임포트 억세스 토큰생성
-      String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
-      String imp_secret = URLEncoder
-            .encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
-      JSONObject json = new JSONObject();
-      json.put("imp_key", imp_key);
-      json.put("imp_secret", imp_secret);
-
-      String requestURL = "https://api.iamport.kr/users/getToken";
-
-      String token = iamport.getToken(request, response, json, requestURL);
-
+      String token = iamport.getToken(request, response);
       String order_muid = ovo.getOrder_muid();
       int res = iamport.cancelPayment(token, order_muid);
       orderService.orderCancle(ovo);
@@ -586,23 +576,13 @@ public class OrderController {
    // 재결제 되고 다시 예약하는 부분 > 아임포트 콜백
    @RequestMapping(value = "/iamport-callback", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
    public void callback(@RequestBody HashMap<String, Object> map,HttpServletRequest request, HttpServletResponse response) throws Exception{
-      //String imp_uid =(String)map.get("imp_uid");
       String merchant_uid =(String)map.get("merchant_uid");
       String end_uid = merchant_uid.substring(merchant_uid.length()-1, merchant_uid.length());
       String status = (String)map.get("status");
       
       if(end_uid.equals("s") && status.equals("paid")) {
-         Iamport iamport = new Iamport();
-         String requestURL = "https://api.iamport.kr/users/getToken";
-         String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
-         String imp_secret = URLEncoder
-               .encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
-         JSONObject json = new JSONObject();
-         json.put("imp_key", imp_key);
-         json.put("imp_secret", imp_secret);
-         
-         String token = iamport.getToken(request, response, json, requestURL);
-         
+         Iamport iamport = new Iamport();         
+         String token = iamport.getToken(request, response);         
          HashMap<String, Object> getinfo = iamport.getSchedule(merchant_uid, token); 
          String customer_uid = (String)getinfo.get("customer_uid");
          String amount = ""+getinfo.get("amount");
@@ -632,15 +612,6 @@ public class OrderController {
       String amount =  Integer.toString(msv.getSubsprice());
       
       Iamport iamport = new Iamport();
-      String requestURL = "https://api.iamport.kr/users/getToken";
-      String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
-      String imp_secret = URLEncoder
-            .encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
-      JSONObject json = new JSONObject();
-      json.put("imp_key", imp_key);
-      json.put("imp_secret", imp_secret);
-      
-      String token = iamport.getToken(request, response, json, requestURL);
       iamport.resub(customer_uid, muid, amount, time, request, response);
       
        HashMap<String, Object> map = new HashMap<String, Object>();

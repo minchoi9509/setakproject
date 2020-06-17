@@ -38,12 +38,22 @@ public class Iamport {
 	
 	public static final String import_cancel_url = "https://api.iamport.kr/payments/cancel";
 	public static final String import_schedule_url = "https://api.iamport.kr/subscribe/payments/schedule";
+	public static final String requestURL = "https://api.iamport.kr/users/getToken";
 	
-	public String getToken(HttpServletRequest request, HttpServletResponse response,JSONObject json ,String requestURL) throws Exception{
+	public String getToken(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
 		String _token = "";
+		
 
 		try{
+			
+			// 아임포트 억세스 토큰생성
+			String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
+			String imp_secret = URLEncoder
+					.encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
+			JSONObject json = new JSONObject();
+			json.put("imp_key", imp_key);
+			json.put("imp_secret", imp_secret);
 			
 			String requestString = "";
 			URL url = new URL(requestURL);
@@ -179,8 +189,6 @@ public class Iamport {
 			}
 			br.close();
 
-			System.out.println(responsebuffer.toString());
-
 		} catch (Exception e) {
 			System.out.println(e);
 			return -1; 
@@ -196,7 +204,6 @@ public class Iamport {
 			
 			String requestString = "";
 			String urlport = "https://api.iamport.kr/subscribe/payments/schedule/" + muid+"?_token="+token;
-			System.out.println(urlport);
 			URL url = new URL(urlport);
 			
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -211,7 +218,6 @@ public class Iamport {
 			connection.connect();
 
 			StringBuilder sb = new StringBuilder(); 
-			System.out.println(connection.getResponseCode());
 			if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 				
 				BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
@@ -223,7 +229,6 @@ public class Iamport {
 
 				br.close();
 				requestString = sb.toString();
-				System.out.println(requestString);
 
 			}
 
@@ -258,16 +263,7 @@ public class Iamport {
 		Iamport iamport = new Iamport();
 
 		// 아임포트 억세스 토큰생성
-		String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
-		String imp_secret = URLEncoder
-				.encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
-		JSONObject json = new JSONObject();
-		json.put("imp_key", imp_key);
-		json.put("imp_secret", imp_secret);
-		
-		String requestURL = "https://api.iamport.kr/users/getToken";
-
-		String token = iamport.getToken(request, response, json, requestURL);
+		String token = iamport.getToken(request, response);
 
 		String body = "{\"customer_uid\":\"" + cid + "\"," + "\"schedules\": [\r\n" + "{" + "\"merchant_uid\":" + "\""
 				+ mid + "\"" + ",\r\n" + "\"schedule_at\":\"" + time + "\",\r\n" + "\"amount\":\"" + amount + "\""
@@ -319,21 +315,10 @@ public class Iamport {
 	public void resub(String cid, String mid, String amount, long time, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		// 정기 결제 예약
-		Iamport iamport = new Iamport();
 		
 		// 아임포트 억세스 토큰생성
-		String imp_key = URLEncoder.encode("9458449343571602", "UTF-8");
-		String imp_secret = URLEncoder
-				.encode("c78aAvqvXVnomnIQHgAPXG42aFDaIZGU7P4IludiqBGNYoDGFevCVzF5fjgYiWSqMX87slpSX6FWvjCa", "UTF-8");
-		JSONObject json = new JSONObject();
-		json.put("imp_key", imp_key);
-		json.put("imp_secret", imp_secret);
 		
-		String requestURL = "https://api.iamport.kr/users/getToken";
-		
-		String token = iamport.getToken(request, response, json, requestURL);
-		
+		String token = this.getToken(request, response);		
 		String body = "{\"customer_uid\":\"" + cid + "\"," + "\"schedules\": [\r\n" + "{" + "\"merchant_uid\":" + "\""
 				+ mid + "\"" + ",\r\n" + "\"schedule_at\":\"" + time + "\",\r\n" + "\"amount\":\"" + amount + "\""
 				+ "}\r\n" + "]\r\n" + "}";
@@ -358,7 +343,6 @@ public class Iamport {
 			
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
-			System.out.println(responseCode);
 			if (responseCode == 200) { // 정상 호출
 				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 			} else { // 에러 발생
@@ -372,7 +356,6 @@ public class Iamport {
 			}
 			br.close();
 			
-			System.out.println(responsebuffer.toString());
 			
 		} catch (Exception e) {
 			System.out.println(e);
